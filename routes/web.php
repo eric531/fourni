@@ -15,22 +15,22 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-Route::get('/fournisseur', [ControllerFournisseur::class, 'index'])->name('fournisseur');
-Route::post('/Ajouterfournisseur', [ControllerFournisseur::class, 'ajouterFournisseurs'])->name('ajouterfournisseurs');
+
 // Route::get('/teste', [ControllerUser::class, 'index']);
 
 
 
 Route::middleware(['auth',])->group(function(){
 
+    Route::get('/', function () {
+        return view('welcome');
+    });
+    
+    Route::get('/fournisseur', [ControllerFournisseur::class, 'index'])->name('fournisseur');
+    Route::post('/Ajouterfournisseur', [ControllerFournisseur::class, 'ajouterFournisseurs'])->name('ajouterfournisseurs');
     Route::get('/dashboard', [ControllerUser::class, 'index'])->name('dashboard');
     
-    Route::resource('/voirmesdons', DonateController::class)->only([
-        'index', 'store'
-    ]);
+    
 
 });
 
