@@ -40,12 +40,12 @@
 			<form>
 			<div class="col-md-6"> 
 			<center style="font-size:18px; text-align:center;padding-top:3px;">
-			Recherche par nom de produit ou service
+			Rechercher un fournisseur agrée
 			</center>
 			</div>
 		
 				<div class="col-md-3"> 
-			<div class="form-group"> <input type="text" class="form-control" id="exampleInputEmail3" placeholder="Nom du produit ou service"> </div> 
+			<div class="form-group"> <input type="text" class="form-control" id="exampleInputEmail3" placeholder="code: FCIxxxxx0"> </div> 
 			</div>
 				<div class="col-md-3"> 
 			<div class="form-group">
@@ -59,7 +59,7 @@
 			
 			</div>
 			
-			
+<!-- 			
 			<div class="main-page">
 				<div class="row-one">
 					<div class="col-md-4 widget states-last">
@@ -102,6 +102,6 @@
 					</div>
 				</div>
 				<div class="clearfix"> </div>
-			</div>
+			</div> -->
 		</div>
 @endsection

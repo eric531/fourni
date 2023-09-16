@@ -5,7 +5,7 @@
 <div id="page-wrapper" style=>
 					<div class="main-page">
 					
-			<div class="row" style="padding-top:15px;background:#ddd;  margin-bottom:20px; margin-top:50px;">
+			<!-- <div class="row" style="padding-top:15px;background:#ddd;  margin-bottom:20px; margin-top:50px;">
 			
 			<form>
 			<div class="col-md-3"> 
@@ -57,7 +57,7 @@
 			
 			
 			
-			</div>
+			</div> -->
 			
 			<div class="main-page">
 			<div class="tables">
@@ -72,7 +72,7 @@
 								</tr>
 							</thead> 
 							
-							<form action="{{ route('ajouterfournisseurs') }}" method="POST">
+							<!-- <form action="{{ route('ajouterfournisseurs') }}" method="POST">
     @csrf
     @foreach ($fournisseurs as $fournisseur)
         <input type="checkbox" name="fournisseurs[]" value="{{ $fournisseur->id }}">
@@ -80,7 +80,7 @@
         <br>
     @endforeach
     <button type="submit">Ajouter les fournisseurs sélectionnés</button>
-</form>
+</form> -->
 
 						@forelse ($fournisseurs as $fourni)
 						<tbody>
@@ -99,7 +99,7 @@
 						
 						</tbody> 
 						@empty
-							<span>aucun fournisseur enregistrer</span>
+							<span style="color: red;">aucun fournisseur enregistrer</span>
 						@endforelse
 					</table> 
 						<div class="row">
