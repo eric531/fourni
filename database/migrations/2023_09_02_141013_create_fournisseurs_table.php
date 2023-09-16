@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('domaine');
             $table->string('contact');
             $table->string('email');
+            $table->string('code_fournisseur');
             $table->timestamps();
         });
     }

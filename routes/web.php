@@ -26,10 +26,10 @@ Route::middleware(['auth',])->group(function(){
         return view('welcome');
     });
     
-    Route::get('/fournisseur', [ControllerFournisseur::class, 'index'])->name('fournisseur');
+    Route::post('/Rechercherfournisseur', [ControllerFournisseur::class, 'rechercherFournisseur'])->name('recherche');
     Route::post('/Ajouterfournisseur', [ControllerFournisseur::class, 'ajouterFournisseurs'])->name('ajouterfournisseurs');
     Route::get('/dashboard', [ControllerUser::class, 'index'])->name('dashboard');
-    
+    Route::get('/fournisseur', [ControllerFournisseur::class, 'index'])->name('fournisseur');
     
 
 });

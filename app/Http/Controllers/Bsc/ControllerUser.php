@@ -26,4 +26,5 @@ class ControllerUser extends Controller
 
         return view('dashboard', compact('for', 'fournisseur', 'fourn_user'));
     }
+     
 }

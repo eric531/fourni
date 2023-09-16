@@ -17,6 +17,7 @@ class Fournisseur extends Model
         'domaine',
         'contact',
         'email',
+        'code_fournisseur'
     ];
 
     public function users()
