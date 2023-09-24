@@ -16,6 +16,7 @@ class ControllerFournisseur extends Controller
     {
        
         $fournisseurs = Fournisseur::all();
+       
 
         return view('fournisseur', compact('fournisseurs', ));
     }
@@ -33,10 +34,11 @@ class ControllerFournisseur extends Controller
     {
         $codeFournisseur = $request->input('code_fournisseur');
 
-        $fournisseur = Fournisseur::where('code_fournisseur', $codeFournisseur)->first();
+        $searchfournisseur = Fournisseur::where('code_fournisseur', $codeFournisseur)->first();
+        //dd($fournisseur);
 
-        if (isset($fournisseur)){
-            return view('dashboard', compact('fournisseur'));
+        if (isset($searchfournisseur)){
+            return view('dashboard', compact('searchfournisseur'));
         } else {
             return back()->with('erreur', 'Fournisseur non trouvé.');
         }
