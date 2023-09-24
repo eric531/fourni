@@ -61,15 +61,37 @@
 			
 			</div>
 			<div class="container">
+			@if(session('error'))
+        <div style=" color: red;">{{ session('error') }}</div>
+    @endif
+	@if(session('success'))
+        <div style=" color: green;">{{ session('success') }}</div>
+    @endif
     <h1>Détails du fournisseur</h1>
 
 	@if (isset($searchfournisseur))
+	<h3>Ajouter un fournisseur</h3>
+   
+	<form action="{{route('ajouterfournisseurs')}}" method="POST">
+		@csrf
     <p><strong>Nom du fournisseur:</strong> {{ $searchfournisseur->name }}</p>
     <p><strong>Domaine du fournisseur:</strong> {{ $searchfournisseur->domaine }}</p>
     <p><strong>Gmail du fournisseur:</strong> {{ $searchfournisseur->email }}</p>
-@else
-    <p>Le fournisseur n'a pas été trouvé.</p>
+	<input type="hidden" name="fournisseur" value="{{ $searchfournisseur->id }}">
+	<input type="hidden" name="name" value="{{ $searchfournisseur->name }}">
+	<input type="hidden" name="domaine" value="{{ $searchfournisseur->domaine }}">
+	<input type="hidden" name="email" value="{{ $searchfournisseur->email }}">
+    <button type="submit" style="background-color: #007BFF; color: #fff; border: none; padding: 10px 20px; cursor: pointer;">
+        Ajouter fournisseur
+    </button>
+
+
+</form>
 @endif
+
+@if (!isset($searchfournisseur) && !session('success') && !session('error'))
+        <p>Le fournisseur n'a pas été trouvé.</p>
+    @endif
 
 
 	

@@ -14,21 +14,30 @@ class ControllerFournisseur extends Controller
     
     public function index()
     {
-       
+        $user = Auth::User();
         $fournisseurs = Fournisseur::all();
        
-
+        $fournisseurs = $user->fournisseurs;
         return view('fournisseur', compact('fournisseurs', ));
     }
 
     //ajouter les fournisseurs sélectionnés à la liste de l'utilisateur :
     public function ajouterFournisseurs(Request $request)
     {
+       // dd($request->all());
         $user = Auth::user();
-        $user->fournisseurs()->Sync($request->fournisseurs);
 
-        return redirect()->route('dashboard')->with('success', 'Fournisseurs ajoutés avec succès.');
+        if ($user->fournisseurs->contains($request->fournisseur)) {
+            return redirect()->route('dashboard')->with('error', 'Le fournisseur est déjà associé à cet utilisateur.');
+        }
+
+        $user->fournisseurs()->syncWithoutDetaching($request->fournisseur);
+        
+        return redirect()->route('dashboard')->with('success', 'Fournisseurs ajoutés avec succès!');
     }
+
+
+
 
     public function rechercherFournisseur(Request $request)
     {
@@ -43,5 +52,8 @@ class ControllerFournisseur extends Controller
             return back()->with('erreur', 'Fournisseur non trouvé.');
         }
     }
+
+
+
 
 }
