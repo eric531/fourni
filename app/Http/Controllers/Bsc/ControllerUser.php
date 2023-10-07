@@ -23,7 +23,7 @@ class ControllerUser extends Controller
         $for = $fourn_user;
 
         $fournisseur = Fournisseur::all();
-
+        //dd($fournisseur);
         return view('dashboard', compact('for', 'fournisseur', 'fourn_user'));
     }
      
