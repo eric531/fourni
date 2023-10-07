@@ -184,7 +184,7 @@
     @yield('content')
 		<!--footer-->
 		<div class="footer">
-		   <p>&copy; 2022 BSC Logiciel Fournisseurs agréés. Tous droits réservés | Design by <a href="https://n-havila.com/" target="_blank">N'havila</a></p>
+		   <p>&copy; © 2022 BSC Logiciel Fournisseurs agréés -Tous droits réservés</p>
 		</div>
         <!--//footer-->
 	</div>
