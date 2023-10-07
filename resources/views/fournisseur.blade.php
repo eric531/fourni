@@ -72,7 +72,7 @@
 								</tr>
 							</thead> 
 							
-							<!-- <form action="{{ route('ajouterfournisseurs') }}" method="POST">
+							<form action="{{ route('ajouterfournisseurs') }}" method="POST">
     @csrf
     @foreach ($fournisseurs as $fournisseur)
         <input type="checkbox" name="fournisseurs[]" value="{{ $fournisseur->id }}">
@@ -80,7 +80,7 @@
         <br>
     @endforeach
     <button type="submit">Ajouter les fournisseurs sélectionnés</button>
-</form> -->
+</form>
 
 						@forelse ($fournisseurs as $fourni)
 						<tbody>

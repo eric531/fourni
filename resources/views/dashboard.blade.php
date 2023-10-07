@@ -62,11 +62,7 @@
 			</div>
 			<div class="container">
     <h1>Détails du fournisseur</h1>
-
-	<p><strong>Nom du fournisseur:</strong> {{ $fournisseur->name }}</p>
-	<p><strong>Domaine du fournisseur:</strong> {{ $fournisseur->domaine }}</p>
-	<p><strong>Gmail du fournisseur:</strong> {{ $fournisseur->email }}</p>
-    <!-- Ajoutez d'autres informations du fournisseur ici -->
+	
 
 	
 </div>
