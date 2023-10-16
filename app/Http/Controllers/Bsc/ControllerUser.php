@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Fournisseur;
 use Illuminate\Support\Facades\Auth;
+use GuzzleHttp\Client;
 
 class ControllerUser extends Controller
 {
@@ -14,17 +15,31 @@ class ControllerUser extends Controller
 
     public function index()
     {
+      //  $apiUrl = 'https://bsc-agrement.net/api/fournisseurs/';
         // recuperation de l'utilisateur connecté
-        $user = Auth::User();
 
-        //recuperation de tous les fournisseurs de l'utilisateur connecté
-        $fourn_user = $user->fournisseurs;
+      //  $client = new Client();
 
-        $for = $fourn_user;
+        // $response = $client->get($apiUrl, [
+        //     'headers' => [
+        //         'Authorization' => 'Bearer ' . $token,
+        //     ],
+        //     'verify' => false,
+        // ]);
+        // if ($response->getStatusCode() != 200) {
+        //     return view('error');
+        // }
 
-        $fournisseur = Fournisseur::all();
-        //dd($fournisseur);
-        return view('dashboard', compact('for', 'fournisseur', 'fourn_user'));
+        // $fournisseurs = json_decode($response->getBody(), true);
+        // dd($fournisseurs);
+        $user = $_COOKIE['user']??null;
+        $fournisseur = [];
+        $fourn_user = [];
+        $for = [];
+        return view('dashboard', compact('for', 'fournisseur', 'fourn_user', 'user'));
     }
-     
+
+
+
+
 }
