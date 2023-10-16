@@ -43,36 +43,32 @@ class ControllerFournisseur extends Controller
     //ajouter les fournisseurs sélectionnés à la liste de l'utilisateur :
     public function ajouterFournisseurs(Request $request)
     {
-        $apiUrl = 'https://bsc-agrement.net/api/add-fourn';
+        $apiUrl = 'https://bsc-agrement.net/api/wish/add';
 
         $token = $_COOKIE['token'] ?? null;
         $user = $_COOKIE['user']??null;
+        $user_id = $_COOKIE['user_id'] ?? null;
         $client = new Client();
 
-        $data = $request->excetp('_token');
-
-        // $searchfournisseur = Fournisseur::where('code_fournisseur', $codeFournisseur)->first();
-        // //dd($fournisseur);
-
+        $data = [
+            "user_id" => $user_id,
+            "fournisseur_id"=>$request->input('fournisseur'),
+        ];
 
         $response = $client->post($apiUrl, [
             'headers' => [
                 'Authorization' => 'Bearer ' . $token,
             ],
-            'form_param'=> $data,
+            'form_params'=> $data,
             'verify' => false,
         ]);
-
-        if ($response->getStatusCode() != 200) {
+       // dd($response);
+        if ($response->getStatusCode() == 201) {
             return redirect()->route('dashboard')->with('success', 'Fournisseurs ajoutés avec succès!');
         }
-        // if ($user->fournisseurs->contains($request->fournisseur)) {
-        //     return redirect()->route('dashboard')->with('error', 'Le fournisseur est déjà associé à cet utilisateur.');
-        // }
 
-       # $user->fournisseurs()->syncWithoutDetaching($request->fournisseur);
 
-        return redirect()->route('dashboard')->with('success', 'Fournisseurs ajoutés avec succès!');
+       return redirect()->route('dashboard')->with('error', 'Le fournisseur est déjà associé à cet utilisateur.');
     }
 
 

@@ -72,7 +72,7 @@
 	@if (isset($searchfournisseur) && !session('error'))
 	<h3>Ajouter un fournisseur</h3>
 
-	<form action="{{route('ajouterfournisseurs')}}" method="GET">
+	<form action="{{route('ajouterfournisseurs')}}" method="POST">
 		@csrf
         <p><strong>Nom du fournisseur:</strong> {{ isset($searchfournisseur['entreprise']) ? $searchfournisseur['entreprise'] : 'Non disponible' }}</p>
 <p><strong>Domaine du fournisseur:</strong> {{ isset($searchfournisseur['domaine_activites_1']) ? $searchfournisseur['domaine_activites_1'] : 'Non disponible' }}</p>

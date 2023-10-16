@@ -44,11 +44,15 @@ class AuthenticatedSessionController extends Controller
 
         if ($response->getStatusCode() == 200) {
             $decode = json_decode($response->getBody());
+            // dd($decode->data->user->id);
             $token = $decode->data->token;
-            $user =  $decode->data->name;
+            $user =  $decode->data->user->name;
+            $user_id =  $decode->data->user->id;
+
             // Stockez le token en tant que cookie
             setcookie('token', $token, time() + 86400, '/', null, false, true);
             setcookie('user', $user, time() + 86400, '/', null, false, true);
+            setcookie('user_id', $user_id, time() + 86400, '/', null, false, true);
            $request->session()->regenerate();
 
             return redirect()->intended(RouteServiceProvider::HOME);
