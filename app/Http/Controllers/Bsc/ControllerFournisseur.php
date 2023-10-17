@@ -19,7 +19,7 @@ class ControllerFournisseur extends Controller
         $apiUrl = 'https://bsc-agrement.net/api/fournisseurs/';
 
         $token = $_COOKIE['token'] ?? null;
-
+        $user = $_COOKIE['user']??null;
         $client = new Client();
 
         $response = $client->get($apiUrl, [
@@ -36,7 +36,7 @@ class ControllerFournisseur extends Controller
         //dd($data["data"]['data'][0]);
         $fournisseurs = $data["data"]['data'];
        // dd($fournisseurs);
-        return view('fournisseur', compact('fournisseurs'));
+        return view('fournisseur', compact('fournisseurs','user'));
     }
 
 
@@ -87,9 +87,6 @@ class ControllerFournisseur extends Controller
         $user = $_COOKIE['user']??null;
         $client = new Client();
 
-
-        // $searchfournisseur = Fournisseur::where('code_fournisseur', $codeFournisseur)->first();
-        // //dd($fournisseur);
 
 
         $response = $client->post($apiUrl, [
