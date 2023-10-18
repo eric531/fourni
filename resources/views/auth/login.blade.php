@@ -19,14 +19,14 @@
 <link href="{{asset('styles/css/style.css')}}" rel='stylesheet' type='text/css' />
 <!-- font CSS -->
 <!-- font-awesome icons -->
-<link href="{{asset('styles/css/font-awesome.css')}}" rel="stylesheet"> 
+<link href="{{asset('styles/css/font-awesome.css')}}" rel="stylesheet">
 <!-- //font-awesome icons -->
  <!-- js-->
 <script src="{{asset('styles/js/jquery-1.11.1.min.js')}}"></script>
 <script src="{{asset('styles/js/modernizr.custom.js')}}"></script>
 <!--webfonts-->
 <link href='//fonts.googleapis.com/css?family=Roboto+Condensed:400,300,300italic,400italic,700,700italic' rel='stylesheet' type='text/css'>
-<!--//webfonts--> 
+<!--//webfonts-->
 <!--animate-->
 <link href="{{asset('styles/css/animate.css')}}" rel="stylesheet" type="text/css" media="all">
 <script src="{{asset('styles/js/wow.min.js')}}"></script>
@@ -49,12 +49,12 @@
 <script src="{{asset('styles/js/custom.js')}}"></script>
 <link href="{{asset('styles/css/custom.css')}}" rel="stylesheet">
 <!--//Metis Menu -->
-</head> 
+</head>
 <body class="cbp-spmenu-push" style="background:#003399;">
 	<div class="main-content">
-	
-		
-		
+
+
+
 		<!-- main content start-->
 		<div id="page-wrapper" style="background:#d3d3d3;padding-top:30px;">
 			<div class="main-page login-page ">
@@ -64,11 +64,12 @@
 						<h4>Bienvenue sur <a href="#">  BSC <br>Répertoire des Fournisseurs agréés</a> </h4>
 					</div>
 					<div class="login-body">
+                    <x-auth-validation-errors class="mb-4" :errors="$errors" />
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
 
-							<input value="bsc" type="text" class="user" name="email" placeholder="Enter your email" required="">
-							<input  value="bsc" type="password" name="password" class="lock" placeholder="password">
+							<input  type="text" class="user" name="email" placeholder="Enter your email" required="">
+							<input   type="password" name="password" class="lock" placeholder="password">
 							<input type="submit" value="Se connecter">
 							<div class="forgot-grid">
 								<label class="checkbox"><input type="checkbox" name="remember" checked=""><i></i>Se souvenir de moi</label>
@@ -80,7 +81,7 @@
 					</form>
 					</div>
 				</div>
-				
+
 				<!--
 				<div class="login-page-bottom">
 					<h5> - OR -</h5>
@@ -92,7 +93,7 @@
 		</div>
 		<!--footer-->
 		<div class="footer">
-		   <p>&copy; 2023 BSC Logiciel. Tous drpits réservés | Design by <a href="https://n-havila.com/" target="_blank">N'havila</a></p>
+		<p>&copy; © 2022 BSC Logiciel Fournisseurs agréés -Tous droits réservés</p>
 		</div>
         <!--//footer-->
 	</div>
@@ -102,14 +103,14 @@
 			var menuLeft = document.getElementById( 'cbp-spmenu-s1' ),
 				showLeftPush = document.getElementById( 'showLeftPush' ),
 				body = document.body;
-				
+
 			showLeftPush.onclick = function() {
 				classie.toggle( this, 'active' );
 				classie.toggle( body, 'cbp-spmenu-push-toright' );
 				classie.toggle( menuLeft, 'cbp-spmenu-open' );
 				disableOther( 'showLeftPush' );
 			};
-			
+
 			function disableOther( button ) {
 				if( button !== 'showLeftPush' ) {
 					classie.toggle( showLeftPush, 'disabled' );

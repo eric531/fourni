@@ -20,18 +20,20 @@ use Illuminate\Support\Facades\Route;
 
 
 
-Route::middleware(['auth',])->group(function(){
+Route::middleware(['token',])->group(function(){
 
-    Route::get('/', function () {
-        return view('welcome');
-    });
-    
-    Route::post('/Rechercherfournisseur', [ControllerFournisseur::class, 'rechercherFournisseur'])->name('recherche');
+    // Route::get('/', function () {
+    //     return view('welcome');
+    // });
+
+    Route::get('/Rechercherfournisseur', [ControllerFournisseur::class, 'rechercherFournisseur'])->name('recherche');
+    // Route::get('/Rechercherfournisseur/{code}', [ControllerFournisseur::class, 'rechercherFournisseur'])->name('recherche');
     Route::post('/Ajouterfournisseur', [ControllerFournisseur::class, 'ajouterFournisseurs'])->name('ajouterfournisseurs');
     Route::get('/dashboard', [ControllerUser::class, 'index'])->name('dashboard');
     Route::get('/fournisseur', [ControllerFournisseur::class, 'index'])->name('fournisseur');
-    
+
 
 });
+
 
 require __DIR__.'/auth.php';
