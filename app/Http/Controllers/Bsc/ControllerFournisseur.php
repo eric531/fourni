@@ -76,7 +76,7 @@ class ControllerFournisseur extends Controller
 
     public function rechercherFournisseur(Request $request)
     {
-        dd($request);
+        #dd($request);
         $codeFournisseur = $request->input('code_fournisseur');
 
         if ($codeFournisseur ==null){
@@ -102,9 +102,11 @@ class ControllerFournisseur extends Controller
 
         $data = json_decode($response->getBody(), true);
         $searchfournisseur = $data["data"]['data'];
-      //dd($codeFournisseur,$searchfournisseur);
+        $produits_services = json_decode($searchfournisseur['produits_services'])[0];
+        $interlocuteur =json_decode($searchfournisseur['interlocuteur'])[0];
+      #dd($interlocuteur->interloc_nom);
         if (isset($searchfournisseur) || $searchfournisseur !=null){
-            return view('dashboard', compact('searchfournisseur','user'));
+            return view('dashboard', compact('searchfournisseur','user','interlocuteur','produits_services'));
         } else {
             return back()->with('error', 'Fournisseur non trouvé.');
         }

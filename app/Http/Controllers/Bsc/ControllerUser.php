@@ -44,5 +44,5 @@ class ControllerUser extends Controller
         $for = [];
         return view('dashboard', compact('for', 'fournisseur', 'fourn_user', 'user'));
     }
-     
+
 }
