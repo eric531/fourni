@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers\Bsc;
 
-use App\Models\Fournisseur;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
+use App\Models\Fournisseur;
 use GuzzleHttp\Client;
 
 class ControllerFournisseur extends Controller
@@ -16,25 +15,13 @@ class ControllerFournisseur extends Controller
 
     public function index()
     {
-        $apiUrl = 'https://bsc-agrement.net/api/fournisseurs/';
+        #$apiUrl = 'https://bsc-agrement.net/api/fournisseurs/';
 
         $token = $_COOKIE['token'] ?? null;
         $user = $_COOKIE['user']??null;
-        $client = new Client();
+        $user_id = $_COOKIE['user_id'] ?? null;
 
-        $response = $client->get($apiUrl, [
-            'headers' => [
-                'Authorization' => 'Bearer ' . $token,
-            ],
-            'verify' => false,
-        ]);
-        if ($response->getStatusCode() != 200) {
-            return view('error');
-        }
-
-        $data = json_decode($response->getBody(), true);
-        //dd($data["data"]['data'][0]);
-        $fournisseurs = $data["data"]['data'];
+        $fournisseurs = Fournisseur::wherer('user_id',$user)->get();
        // dd($fournisseurs);
         return view('fournisseur', compact('fournisseurs','user'));
     }
@@ -43,32 +30,22 @@ class ControllerFournisseur extends Controller
     //ajouter les fournisseurs sélectionnés à la liste de l'utilisateur :
     public function ajouterFournisseurs(Request $request)
     {
-        $apiUrl = 'https://bsc-agrement.net/api/wish/add';
+        #$apiUrl = 'https://bsc-agrement.net/api/wish/add';
 
         $token = $_COOKIE['token'] ?? null;
         $user = $_COOKIE['user']??null;
         $user_id = $_COOKIE['user_id'] ?? null;
-        $client = new Client();
-
-        $data = [
-            "user_id" => $user_id,
-            "fournisseur_id"=>$request->input('fournisseur'),
-        ];
-
-        $response = $client->post($apiUrl, [
-            'headers' => [
-                'Authorization' => 'Bearer ' . $token,
-            ],
-            'form_params'=> $data,
-            'verify' => false,
-        ]);
-       // dd($response);
-        if ($response->getStatusCode() == 201) {
-            return redirect()->route('dashboard')->with('success', 'Fournisseurs ajoutés avec succès!');
-        }
 
 
-       return redirect()->route('dashboard')->with('error', 'Le fournisseur est déjà associé à cet utilisateur.');
+        $data = $request->except('_token');
+        $data['user_id']= $user_id;
+        $fournisseurs = Fournisseur::getOrCreate($data);
+
+
+
+
+
+       return redirect()->route('dashboard')->with('success', 'fournisseur ajoutés avec succès!');
     }
 
 

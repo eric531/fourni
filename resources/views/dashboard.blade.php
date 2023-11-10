@@ -91,72 +91,7 @@
 			@if (isset($searchfournisseur) && !session('error'))
 				<h3>Ajouter un fournisseur</h3>
 
-				<!-- <form action="{{route('ajouterfournisseurs')}}" method="POST">
-					@csrf
 
-					<p>
-						<strong>Nom du fournisseur:</strong> {{ isset($searchfournisseur['entreprise']) ? $searchfournisseur['entreprise'] : 'Non disponible' }}
-					</p>
-					<p>
-						<strong>Domaine du fournisseur:</strong> {{ isset($searchfournisseur['domaine_activites_1']) ? $searchfournisseur['domaine_activites_1'] : 'Non disponible' }}
-					</p>
-					<p>
-						<strong>Gmail du fournisseur:</strong> {{ isset($searchfournisseur['email']) ? $searchfournisseur['email'] : 'Non disponible' }}
-					</p>
-                    <p>
-						<strong>Mobile:</strong> {{ isset($searchfournisseur['mobile']) ? $searchfournisseur['mobile'] : 'Non disponible' }}
-					</p>
-                    <p>
-						<strong>Fixe:</strong> {{ isset($searchfournisseur['fixe']) ? $searchfournisseur['fixe'] : 'Non disponible' }}
-					</p>
-                    <p>
-						<strong>rccm:</strong> {{ isset($searchfournisseur['mobilrccme']) ? $searchfournisseur['rccm'] : 'Non disponible' }}
-					</p>
-                    <p>
-						<strong>cc:</strong> {{ isset($searchfournisseur['cc']) ? $searchfournisseur['cc'] : 'Non disponible' }}
-					</p>
-                    <p>
-						<strong>date_dfe:</strong> {{ isset($searchfournisseur['date_dfe']) ? $searchfournisseur['date_dfe'] : 'Non disponible' }}
-					</p>
-                    <p>
-						<strong>situation_geo:</strong> {{ isset($searchfournisseur['situation_geo']) ? $searchfournisseur['situation_geo'] : 'Non disponible' }}
-					</p>
-                    <p>
-						<strong>sous_domaine:</strong> {{ isset($searchfournisseur['sous_domaine']) ? $searchfournisseur['sous_domaine'] : 'Non disponible' }}
-					</p>
-                    <p>
-						<strong>produits_services:</strong> {{ isset($produits_services->produits_services) ? $produits_services->produits_services : 'Non disponible' }}
-					</p>
-                    <p>
-						<strong>validite_arf:</strong> {{ isset($searchfournisseur['validite_arf']) ? $searchfournisseur['validite_arf'] : 'Non disponible' }}
-					</p>
-                    <p>
-						<strong>validite_cnps:</strong> {{ isset($searchfournisseur['validite_cnps']) ? $searchfournisseur['validite_cnps'] : 'Non disponible' }}
-					</p>
-                    <p>
-						<strong>interlocuteur:</strong>
-                        <p>{{$interlocuteur->interloc_nom}}</p>
-                        <p>{{$interlocuteur->interloc_fonction}}</p>
-                        <p>{{$interlocuteur->interloc_contact}}</p>
-                        <p>{{$interlocuteur->interloc_email}}</p>
-
-					</p>
-                    <p>
-						<strong>status:</strong> {{ $searchfournisseur['status']==1? 'Vrai': 'Faux'  }}
-					</p>
-
-					@if (isset($searchfournisseur['id']))
-						<input type="hidden" name="fournisseur" value="{{ $searchfournisseur['id'] }}">
-					@else
-						<input type="hidden" name="fournisseur" value="">
-					@endif
-
-					<button type="submit" style="background-color: #007BFF; color: #fff; border: none; padding: 10px 20px; cursor: pointer;">
-							Ajouter fournisseur
-					</button>
-
-
-				</form> -->
 
                 <div class="card">
         <form action="{{ route('ajouterfournisseurs') }}" method="POST">

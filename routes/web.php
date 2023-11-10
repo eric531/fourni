@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\Bsc\ControllerFournisseur;
-use App\Http\Controllers\Bsc\ControllerUser;
+use App\Http\Controllers\Bsc\DashboardController;
+
+use App\Http\Controllers\Bsc\DraftController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,8 +31,11 @@ Route::middleware(['token',])->group(function(){
     Route::get('/Rechercherfournisseur', [ControllerFournisseur::class, 'rechercherFournisseur'])->name('recherche');
     // Route::get('/Rechercherfournisseur/{code}', [ControllerFournisseur::class, 'rechercherFournisseur'])->name('recherche');
     Route::post('/Ajouterfournisseur', [ControllerFournisseur::class, 'ajouterFournisseurs'])->name('ajouterfournisseurs');
-    Route::get('/dashboard', [ControllerUser::class, 'index'])->name('dashboard');
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/fournisseur', [ControllerFournisseur::class, 'index'])->name('fournisseur');
+    Route::get('/draft', [DraftController::class, 'index'])->name('draft_list');
+    Route::post('/draft', [DraftController::class, 'store'])->name('draft_add');
+    Route::delete('/draft', [DraftController::class, 'destroy'])->name('draft_destroy');
 
 
 });

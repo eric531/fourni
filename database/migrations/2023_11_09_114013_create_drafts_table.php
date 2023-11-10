@@ -13,13 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('fournisseurs', function (Blueprint $table) {
+        Schema::create('drafts', function (Blueprint $table) {
             $table->id();
             $table->string('nom_forun');
             $table->string('foru_fourn');
             $table->string('gmail_fourn');
-            $table->string('mobile_forun');
             $table->string('domaine_fourn');
+            $table->string('mobile_forun');
             $table->string('fixe');
             $table->string('rccm');
             $table->string('cc');
@@ -31,8 +31,9 @@ return new class extends Migration
             $table->string('validite_cnps');
             $table->json('interlocuteur');
             $table->string('status');
-            $table->boolean('blaklist');
             $table->unsignedBigInteger('user_id');
+
+
             $table->timestamps();
         });
     }
@@ -44,6 +45,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('fournisseurs');
+        Schema::dropIfExists('drafts');
     }
 };
