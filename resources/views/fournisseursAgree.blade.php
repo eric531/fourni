@@ -2,42 +2,14 @@
 
 
 @section('content')
-
-	<div id="page-wrapper" style=>
-
-
-		<form method="GET" action="{{route('recherche')}}">
-
-		@csrf
-		<div class="col-md-6" style=" background-color:orange;" >
-			<center style="font-size:18px; text-align:center;padding-top:3px;">
-			Rechercher un fournisseur agrée
-			</center>
-		</div>
-
-		<div class="col-md-3">
-			<div class="form-group">
-				<input type="text" name="code_fournisseur" class="form-control" id="exampleInputEmail3" placeholder="code: FCIxxxxx0">
-			</div>
-		</div>
-
-		<div class="col-md-3">
-
-			<div class="form-group">
-				<button type="submit" class="form-group">Rechercher</button>
-			</div>
-
-		</div>
-
-		</form>
-		
-		<div class="main-page">
+<div id="page-wrapper" style=>
+					<div class="main-page">
 
 
 			<div class="main-page">
 			<div class="tables">
 				<div class="table-responsive bs-example widget-shadow">
-						<h4>Liste des fournisseurs</h4>
+						<h4>Liste des fournisseurs agrées</h4>
 					<table class="table table-bordered">
 							<thead>
 								<tr>

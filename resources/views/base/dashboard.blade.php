@@ -54,10 +54,18 @@
 						<li>
 							<a href="{{route('dashboard')}}" class="active"><i class="fa fa-home nav_icon"></i>Tableau de bord</a>
 						</li>
+
 						<li>
-							<a href="{{route('fournisseur')}}" class="active"><i class="fa fa-table nav_icon"></i>Liste des fournisseurs</a>
+							<a href="{{route('fournisseur')}}" class="active"><i class="fa fa-table nav_icon"></i>Liste des fournisseurs agrées</a>
 						</li>
-					
+
+						<li>
+							<a href="{{route('fournisseur')}}" class="active"><i class="fa fa-table nav_icon"></i>Liste des fournisseurs prospects</a>
+						</li>
+
+						<li>
+							<a href="{{route('fournisseur')}}" class="active"><i class="fa fa-table nav_icon"></i>Liste des fournisseurs blacklistés</a>
+						</li>
 
 						
 					</ul>
