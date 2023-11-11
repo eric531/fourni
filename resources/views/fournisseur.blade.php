@@ -24,7 +24,7 @@
 		<div class="col-md-3">
 
 			<div class="form-group">
-				<button type="submit" class="form-group">Rechercher</button>
+				<button type="submit" class="form-group  btn-primary">Rechercher</button>
 			</div>
 
 		</div>

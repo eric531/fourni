@@ -49,28 +49,26 @@
 		<!--left-fixed -navigation-->
 		<div class=" sidebar" role="navigation">
             <div class="navbar-collapse">
-				<nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1">
-					<ul class="nav" id="side-menu">
-						<li>
-							<a href="{{route('dashboard')}}" class="active"><i class="fa fa-home nav_icon"></i>Tableau de bord</a>
-						</li>
+            <nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1">
+    <ul class="nav" id="side-menu">
+        <li >
+            <a href="{{ route('dashboard') }}" class="{{ Request::is('dashboard') ? 'active' : '' }}"><i class="fa fa-home nav_icon"></i>Tableau de bord</a>
+        </li>
 
-						<li>
-							<a href="{{route('fournisseur')}}" class="active"><i class="fa fa-table nav_icon"></i>Liste des fournisseurs agrées</a>
-						</li>
+        <li>
+            <a href="{{ route('fournisseur') }}"  class="{{ Request::is('fournisseur') ? 'active' : '' }}"><i class="fa fa-table nav_icon"></i>Liste des fournisseurs agrées</a>
+        </li>
 
-						<li>
-							<a href="{{route('draft_list')}}" class="active"><i class="fa fa-table nav_icon"></i>Liste des fournisseurs prospects</a>
-						</li>
+        <li >
+            <a href="{{ route('draft_list') }}" class="{{ Request::is('draft') ? 'active' : '' }}"><i class="fa fa-table nav_icon"></i>Liste des fournisseurs prospects</a>
+        </li>
 
-						<li>
-							<a href="{{route('blacklist')}}" class="active"><i class="fa fa-table nav_icon"></i>Liste des fournisseurs blacklistés</a>
-						</li>
+        <li >
+            <a href="{{ route('blacklist') }}" class="{{ Request::is('blacklist') ? 'active' : '' }}"><i class="fa fa-table nav_icon"></i>Liste des fournisseurs blacklistés</a>
+        </li>
+    </ul>
+</nav>
 
-						
-					</ul>
-					<!-- //sidebar-collapse -->
-				</nav>
 			</div>
 		</div>
 		<!--left-fixed -navigation-->
@@ -96,9 +94,9 @@
 				</div><!--//end-search-box-->
 				<div class="clearfix"> </div>
 			</div>
-			
+
 			<div class="header-right">
-				
+
 				<!--notification menu end -->
 				<div class="profile_details">
 					<ul>

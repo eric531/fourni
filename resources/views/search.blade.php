@@ -127,7 +127,7 @@
             <input type="hidden" name="fournisseur" value="">
         @endif
 
-        <button type="submit">
+        <button type="submit" class="btn btn-primary">
             Ajouter fournisseur
         </button>
     </form>

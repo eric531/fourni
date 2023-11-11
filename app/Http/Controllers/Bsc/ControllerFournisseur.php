@@ -68,7 +68,7 @@ class ControllerFournisseur extends Controller
     }
 
 
- 
+
 
     //ajouter les fournisseurs sélectionnés à la liste de l'utilisateur :
     public function setblacklist(Request $request, )
@@ -118,9 +118,12 @@ class ControllerFournisseur extends Controller
         }
 
         $data = json_decode($response->getBody(), true);
+
         $searchfournisseur = $data["data"]['data'];
+        if( $searchfournisseur !=null){
         $produits_services = json_decode($searchfournisseur['produits_services'])[0];
         $interlocuteur =json_decode($searchfournisseur['interlocuteur'])[0];
+        }
       #dd($interlocuteur->interloc_nom);
         if (isset($searchfournisseur) || $searchfournisseur !=null){
             return view('search', compact('searchfournisseur','user','interlocuteur','produits_services'));
