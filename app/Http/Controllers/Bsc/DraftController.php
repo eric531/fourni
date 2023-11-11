@@ -16,10 +16,11 @@ class DraftController extends Controller
     {
         $token = $_COOKIE['token'] ?? null;
         $user = $_COOKIE['user'] ?? null;
-        $draft = Draft::where('user_id',$user)->get();
+        $user_id = $_COOKIE['user_id'] ?? null;
+        $fournisseurs = Draft::where('user_id',$user_id)->get();
 
 
-        return view("draft", compact("draft","user"));
+        return view("fournisseursProspects", compact("fournisseurs","user"));
     }
 
 
@@ -31,8 +32,18 @@ class DraftController extends Controller
      */
     public function store(Request $request)
     {
-        $draft = Draft::create($request->except('_token'));
-        return redirect()->route("/dashboard")->with("success","ajouter avec success");
+        $token = $_COOKIE['token'] ?? null;
+        $user = $_COOKIE['user']??null;
+        $user_id = $_COOKIE['user_id'] ?? null;
+
+        $data = $request->except(['_token','id']);
+        $data['status'] = intval($request['status']);
+
+        $data['user_id']= $user_id;
+        $draft = Draft::create($data);
+
+        //dd($data);
+        return redirect()->route("draft_list")->with("success","ajouter avec success");
     }
 
 

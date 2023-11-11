@@ -26,12 +26,19 @@
 							<tr>
 								<th scope="row">
 									<input type="checkbox">
-										<td>{{$fourni['entreprise']}}</td>
-										<td>{{$fourni['domaine_activites_1']}}</td>
-										<td>{{$fourni['mobile']}}</td>
-										<td>{{$fourni['email']}}</td>
+                                        <td>{{$fourni->entreprise}}</td>
+										<td>{{$fourni->domaine_activites_1}}</td>
+										<td>{{$fourni->mobile}}</td>
+										<td>{{$fourni->email}}</td>
 									<td>
 										<span class="badge badge-danger">Voir fiche</span>
+									</td>
+
+                                    <td>
+										<form action="{{route('blacklist_set',['id'=>$fourn->id])}}" method="post">
+                                            @method('_put')
+                                            <button type="submit" class="btn btn-primary"> add to Blaclist</button>
+                                        </form>
 									</td>
 							</tr>
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Bsc;
 
+use App\Models\Draft;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Fournisseur;
@@ -21,11 +22,24 @@ class ControllerFournisseur extends Controller
         $user = $_COOKIE['user']??null;
         $user_id = $_COOKIE['user_id'] ?? null;
 
-        $fournisseurs = Fournisseur::wherer('user_id',$user)->get();
+        $fournisseurs = Fournisseur::where('user_id',$user_id)->where('blaklist',false)->get();
        // dd($fournisseurs);
         return view('fournisseur', compact('fournisseurs','user'));
     }
 
+
+    public function blacklist()
+    {
+        #$apiUrl = 'https://bsc-agrement.net/api/fournisseurs/';
+
+        $token = $_COOKIE['token'] ?? null;
+        $user = $_COOKIE['user']??null;
+        $user_id = $_COOKIE['user_id'] ?? null;
+
+        $fournisseurs = Fournisseur::where('user_id',$user_id)->where('blaklist',true)->get();
+       // dd($fournisseurs);
+        return view('fournisseursBlackliste', compact('fournisseurs','user'));
+    }
 
     //ajouter les fournisseurs sélectionnés à la liste de l'utilisateur :
     public function ajouterFournisseurs(Request $request)
@@ -37,17 +51,43 @@ class ControllerFournisseur extends Controller
         $user_id = $_COOKIE['user_id'] ?? null;
 
 
-        $data = $request->except('_token');
+        $data = $request->except(['_token','id']);
+        $data['status'] = intval($request['status']);
+
         $data['user_id']= $user_id;
-        $fournisseurs = Fournisseur::getOrCreate($data);
+        $data['blaklist']= false;
+        //dd($data);
+        $fournisseurs = Fournisseur::create($data);
+        $draft = Draft::findOrFail(intval($request['id']));
+        $draft->delete();
 
 
 
 
-
-       return redirect()->route('dashboard')->with('success', 'fournisseur ajoutés avec succès!');
+       return redirect()->route('fournisseur')->with('success', 'fournisseur ajoutés avec succès!');
     }
 
+
+ 
+
+    //ajouter les fournisseurs sélectionnés à la liste de l'utilisateur :
+    public function setblacklist(Request $request, )
+    {
+        #$apiUrl = 'https://bsc-agrement.net/api/wish/add';
+
+        $token = $_COOKIE['token'] ?? null;
+        $user = $_COOKIE['user']??null;
+        $user_id = $_COOKIE['user_id'] ?? null;
+        // dd($request['id']);
+        $fourn = Fournisseur::findOrFail(intval($request['id']));
+        $fourn->blaklist = true;
+        $fourn->save();
+
+
+
+
+       return redirect()->route('fournisseur')->with('success', 'fournisseur ajoutés avec succès!');
+    }
 
 
 
@@ -83,7 +123,7 @@ class ControllerFournisseur extends Controller
         $interlocuteur =json_decode($searchfournisseur['interlocuteur'])[0];
       #dd($interlocuteur->interloc_nom);
         if (isset($searchfournisseur) || $searchfournisseur !=null){
-            return view('dashboard', compact('searchfournisseur','user','interlocuteur','produits_services'));
+            return view('search', compact('searchfournisseur','user','interlocuteur','produits_services'));
         } else {
             return back()->with('error', 'Fournisseur non trouvé.');
         }

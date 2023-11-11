@@ -8,5 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Draft extends Model
 {
     use HasFactory;
-    protected $guarented = [];
+    protected $guarded = [];
 }

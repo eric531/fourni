@@ -60,11 +60,11 @@
 						</li>
 
 						<li>
-							<a href="{{route('fournisseur')}}" class="active"><i class="fa fa-table nav_icon"></i>Liste des fournisseurs prospects</a>
+							<a href="{{route('draft_list')}}" class="active"><i class="fa fa-table nav_icon"></i>Liste des fournisseurs prospects</a>
 						</li>
 
 						<li>
-							<a href="{{route('fournisseur')}}" class="active"><i class="fa fa-table nav_icon"></i>Liste des fournisseurs blacklistés</a>
+							<a href="{{route('blacklist')}}" class="active"><i class="fa fa-table nav_icon"></i>Liste des fournisseurs blacklistés</a>
 						</li>
 
 						

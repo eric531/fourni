@@ -15,23 +15,25 @@ return new class extends Migration
     {
         Schema::create('fournisseurs', function (Blueprint $table) {
             $table->id();
-            $table->string('nom_forun');
-            $table->string('foru_fourn');
-            $table->string('gmail_fourn');
-            $table->string('mobile_forun');
-            $table->string('domaine_fourn');
+            $table->string('entreprise');
+            $table->string('email');
+            $table->string('mobile');
+            $table->string('domaine_activites_1');
             $table->string('fixe');
             $table->string('rccm');
             $table->string('cc');
             $table->string('date_dfe');
             $table->string('situation_geo');
-            $table->string('sous_domaine');
+            $table->string('sous_domaine')->nullable();
             $table->string('produits_services');
             $table->string('validite_arf');
             $table->string('validite_cnps');
-            $table->json('interlocuteur');
+            $table->string('interloc_nom');
+            $table->string('interloc_fonction');
+            $table->string('interloc_contact');
+            $table->string('interloc_email');
             $table->string('status');
-            $table->boolean('blaklist');
+            $table->boolean('blaklist')->default(false);
             $table->unsignedBigInteger('user_id');
             $table->timestamps();
         });

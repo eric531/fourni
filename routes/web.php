@@ -33,6 +33,8 @@ Route::middleware(['token',])->group(function(){
     Route::post('/Ajouterfournisseur', [ControllerFournisseur::class, 'ajouterFournisseurs'])->name('ajouterfournisseurs');
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/fournisseur', [ControllerFournisseur::class, 'index'])->name('fournisseur');
+    Route::get('/blacklist', [ControllerFournisseur::class, 'blacklist'])->name('blacklist');
+    Route::post('/blacklist_set', [ControllerFournisseur::class, 'setblacklist'])->name('blacklist_set');
     Route::get('/draft', [DraftController::class, 'index'])->name('draft_list');
     Route::post('/draft', [DraftController::class, 'store'])->name('draft_add');
     Route::delete('/draft', [DraftController::class, 'destroy'])->name('draft_destroy');

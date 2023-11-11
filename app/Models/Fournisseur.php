@@ -10,16 +10,9 @@ class Fournisseur extends Model
 {
     use HasFactory;
 
-    protected $fillable =
 
-    [
-        'name',
-        'domaine',
-        'contact',
-        'email',
-        'code_fournisseur'
-    ];
 
+    protected $guarded = [];
     public function users()
     {
         return $this->belongsToMany(User::class);

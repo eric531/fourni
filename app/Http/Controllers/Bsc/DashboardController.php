@@ -15,15 +15,15 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        $fourn_agree = Fournisseur::count();
+        $fourn_agree = Fournisseur::where("blaklist","=",false)->count();
         $fourn_draft = Draft::count();
         $fourn_blacklist = Fournisseur::where("blaklist","=",true)->count();
-        $domaine_fourn = Fournisseur::where("domaine_fourn","=",true)->count();
+        // $domaine_fourn = Fournisseur::where("domaine_fourn","=",true)->count();
 
         $token = $_COOKIE['token'] ?? null;
         $user = $_COOKIE['user']??null;
 
-        return view('dashboard', compact('fourn_agree', 'fourn_draft', 'fourn_blacklist', 'domaine_fourn','user'));
+        return view('dashboard', compact('fourn_agree', 'fourn_draft', 'fourn_blacklist','user'));
     }
 
 
