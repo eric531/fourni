@@ -24,6 +24,21 @@ class DraftController extends Controller
     }
 
 
+    public function serach(Request $request)
+    {
+
+        $token = $_COOKIE['token'] ?? null;
+        $user = $_COOKIE['user']??null;
+        $user_id = $_COOKIE['user_id'] ?? null;
+
+        $p = $request->input('search');
+
+        $fournisseurs = Draft::where('user_id',$user_id)->where('domaine_activites_1',$p);
+        return response()->json(['data'=> $fournisseurs]);
+    }
+
+
+
     /**
      * Store a newly created resource in storage.
      *

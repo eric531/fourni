@@ -60,11 +60,15 @@
         </li>
 
         <li >
-            <a href="{{ route('draft_list') }}" class="{{ Request::is('draft') ? 'active' : '' }}"><i class="fa fa-table nav_icon"></i>Liste des fournisseurs prospects</a>
+            <a href="{{ route('draft_list') }}" class="{{ Request::is('draft') ? 'active' : '' }}"><i class="fa  fa-user nav_icon"></i>Liste des fournisseurs prospects</a>
         </li>
 
         <li >
-            <a href="{{ route('blacklist') }}" class="{{ Request::is('blacklist') ? 'active' : '' }}"><i class="fa fa-table nav_icon"></i>Liste des fournisseurs blacklistés</a>
+            <a href="{{ route('blacklist') }}" class="{{ Request::is('blacklist') ? 'active' : '' }}"><i class="fa fa-ban nav_icon"></i>Liste des fournisseurs blacklistés</a>
+        </li>
+
+        <li >
+            <a href="{{ route('recherche_view') }}" class="{{ Request::is('search_page') ? 'active' : '' }}"><i class="fa fa-search nav_icon"></i>Rechercher</a>
         </li>
     </ul>
 </nav>
@@ -80,7 +84,7 @@
 				<!--toggle button end-->
 				<!--logo -->
 				<div class="logo" style="background:#fff;" >
-					<a href="index.html">
+					<a href="#">
 						<h1><img style="background:#fff;height:60px;" src="{{asset('styles/uploads/logo.png')}}"></h1>
 
 					</a>

@@ -4,27 +4,25 @@
 @section('content')
 
 	<div id="page-wrapper" style=>
+        <span><br></span>
 
-
-		<form method="GET" action="{{route('recherche')}}">
+        <form id="searchForm" method="POST" action="{{ route('search_fourn') }}">
 
 		@csrf
 		<div class="col-md-6" style=" background-color:orange;" >
-			<center style="font-size:18px; text-align:center;padding-top:3px;">
-			Rechercher un fournisseur agrée
-			</center>
+
 		</div>
 
 		<div class="col-md-3">
 			<div class="form-group">
-				<input type="text" name="code_fournisseur" class="form-control" id="exampleInputEmail3" placeholder="code: FCIxxxxx0">
+				<input type="text" name="search" class="form-control" id="exampleInputEmail3" placeholder="domaine">
 			</div>
 		</div>
 
 		<div class="col-md-3">
 
 			<div class="form-group">
-				<button type="submit" class="form-group  btn-primary">Rechercher</button>
+            <button type="button" class="form-group btn-primary search-filter">Rechercher</button>
 			</div>
 
 		</div>
@@ -76,23 +74,80 @@
 							<span style="color: red;">aucun fournisseur enregistrer</span>
 						@endforelse
 					</table>
-						<div class="row">
-						<div class="col-md-3">
-								<button type="submit" class="btn btn-primary" style="">Filtrer sélection</button>
-						</div>
-							<div class="col-md-3">
-								<button type="submit" class="btn btn-primary" style="">Exporter PDF</button>
-						</div>
-						<div class="col-md-3">
-								&nbsp;
-						</div>
-							<div class="col-md-3">
-								<button type="submit" class="btn btn-primary" style="float:right;">Mailing list</button>
-						</div>
 
-						</div>
-					</div>
 			</div>
 			</div>
 		</div>
+
+
+
+        <script>
+   var btn = document.querySelector('.search-filter');
+   var form = document.getElementById('searchForm');
+
+   btn.addEventListener('click', function (event) {
+      event.preventDefault(); 
+      var formData = new FormData(form);
+      filterSearch(formData.get('search'));
+   }, true);
+
+   function filterSearch(searchTerm) {
+      var payload = {
+         "search": searchTerm,
+      }
+
+      $.ajaxSetup({
+         headers: {
+            'X-CSRF-TOKEN': '<?php echo csrf_token(); ?>'
+         }
+      });
+
+      $.ajax({
+         type: 'POST',
+         dataType: "json",
+         url: "{{ route('search_fourn') }}",
+         data: payload,
+         timeout: 5000,
+         success: function (data) {
+            console.log("SUCCESS", data.response);
+            // Remplacez le contenu du tableau avec les données de la réponse AJAX
+            // Vous devrez probablement ajuster cette partie en fonction de la structure des données retournées.
+            var tableBody = document.querySelector('table tbody');
+            tableBody.innerHTML = '';
+
+            if (data.response.length > 0) {
+               data.response.forEach(function (fourni) {
+                  var newRow = tableBody.insertRow();
+                  newRow.innerHTML = `
+                     <td><input type="checkbox"></td>
+                     <td>${fourni.entreprise}</td>
+                     <td>${fourni.domaine_activites_1}</td>
+                     <td>${fourni.mobile}</td>
+                     <td>${fourni.email}</td>
+                     <td><span class="badge badge-danger">Voir fiche</span></td>
+                     <td>
+                        <form action="{{ route('blacklist_set') }}" method="post">
+                           @csrf
+                           <input type="hidden" name="id" value="${fourni.id}">
+                           <button type="submit" class="btn btn-primary"> add to Blaclist</button>
+                        </form>
+                     </td>
+                  `;
+               });
+            } else {
+               tableBody.innerHTML = '<tr><td colspan="7">Aucun résultat trouvé</td></tr>';
+            }
+         },
+        //  error: function (data) {
+        //     console.error("ERROR...", data)
+        //     alert("Something went wrong.")
+        //  },
+        error: function (jqXHR, textStatus, errorThrown) {
+                console.error("AJAX Error:", textStatus, errorThrown);
+            },
+      });
+   }
+</script>
+
+
 @endsection

@@ -33,7 +33,7 @@
 									<td>
 										<span class="badge badge-danger">Voir fiche</span>
 									</td>
-                                 
+
 							</tr>
 
 
@@ -42,22 +42,7 @@
 							<span style="color: red;">aucun fournisseur enregistrer</span>
 						@endforelse
 					</table>
-						<div class="row">
-						<div class="col-md-3">
-								<button type="submit" class="btn btn-primary" style="">Filtrer sélection</button>
-						</div>
-							<div class="col-md-3">
-								<button type="submit" class="btn btn-primary" style="">Exporter PDF</button>
-						</div>
-						<div class="col-md-3">
-								&nbsp;
-						</div>
-							<div class="col-md-3">
-								<button type="submit" class="btn btn-primary" style="float:right;">Mailing list</button>
-						</div>
-
-						</div>
-					</div>
+						
 			</div>
 			</div>
 		</div>

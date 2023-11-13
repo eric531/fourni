@@ -15,7 +15,7 @@
 
         <h1>Détails du fournisseur</h1>
 
-        @if (isset($searchfournisseur) && !session('error'))
+
             <h3>Ajouter un fournisseur</h3>
 		<form method="GET" action="{{route('recherche')}}">
 
@@ -41,7 +41,7 @@
 		</div>
 
 		</form>
-
+        @if (isset($searchfournisseur) && !session('error'))
 		<div class="main-page">
 
 

@@ -29,6 +29,9 @@ Route::middleware(['token',])->group(function(){
     // });
 
     Route::get('/Rechercherfournisseur', [ControllerFournisseur::class, 'rechercherFournisseur'])->name('recherche');
+    Route::get('/search_page', [ControllerFournisseur::class, 'search_view'])->name('recherche_view');
+    Route::post('/search_fourn', [ControllerFournisseur::class, 'search'])->name('search_fourn');
+
     // Route::get('/Rechercherfournisseur/{code}', [ControllerFournisseur::class, 'rechercherFournisseur'])->name('recherche');
     Route::post('/Ajouterfournisseur', [ControllerFournisseur::class, 'ajouterFournisseurs'])->name('ajouterfournisseurs');
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');

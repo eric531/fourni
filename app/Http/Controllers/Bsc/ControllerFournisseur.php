@@ -28,6 +28,37 @@ class ControllerFournisseur extends Controller
     }
 
 
+    public function search_view()
+    {
+        #$apiUrl = 'https://bsc-agrement.net/api/fournisseurs/';
+
+        $token = $_COOKIE['token'] ?? null;
+        $user = $_COOKIE['user']??null;
+        $user_id = $_COOKIE['user_id'] ?? null;
+
+        return view('search', compact('user'));
+    }
+    public function search(Request $request)
+    {
+        $token = $_COOKIE['token'] ?? null;
+        $user_id = $_COOKIE['user_id'] ?? null;
+        //dd("dzefzef");
+        $searchTerm = $request->input('search');
+
+        $fournisseurs = Fournisseur::where('user_id', $user_id)
+            ->where('blaklist', false)
+            ->where(function ($query) use ($searchTerm) {
+                $query->where('domaine_activites_1', 'LIKE', '%' . $searchTerm . '%')
+                    ->orWhere('entreprise', 'LIKE', '%' . $searchTerm . '%')
+                    ->orWhere('mobile', 'LIKE', '%' . $searchTerm . '%')
+                    ->orWhere('email', 'LIKE', '%' . $searchTerm . '%');
+            })
+            ->get();
+
+        return response()->json(['response' => $fournisseurs]);
+    }
+
+
     public function blacklist()
     {
         #$apiUrl = 'https://bsc-agrement.net/api/fournisseurs/';
