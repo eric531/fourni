@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers\Bsc;
 
+use App\Exports\ExportFourn;
 use App\Models\Draft;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Fournisseur;
 use GuzzleHttp\Client;
+use Maatwebsite\Excel\Facades\Excel;
 
 class ControllerFournisseur extends Controller
 {
@@ -22,7 +24,7 @@ class ControllerFournisseur extends Controller
         $user = $_COOKIE['user']??null;
         $user_id = $_COOKIE['user_id'] ?? null;
 
-        $fournisseurs = Fournisseur::where('user_id',$user_id)->where('blaklist',false)->get();
+        $fournisseurs = Fournisseur::where('user_id',$user_id)->where('blaklist',false)->paginate(5);
        // dd($fournisseurs);
         return view('fournisseur', compact('fournisseurs','user'));
     }
@@ -44,12 +46,14 @@ class ControllerFournisseur extends Controller
         $user_id = $_COOKIE['user_id'] ?? null;
         //dd("dzefzef");
         $searchTerm = $request->input('search');
+        $entreprise = $request->input('entreprise');
+        $domaine = $request->input('domaine');
 
         $fournisseurs = Fournisseur::where('user_id', $user_id)
             ->where('blaklist', false)
-            ->where(function ($query) use ($searchTerm) {
-                $query->where('domaine_activites_1', 'LIKE', '%' . $searchTerm . '%')
-                    ->orWhere('entreprise', 'LIKE', '%' . $searchTerm . '%')
+            ->where(function ($query) use ($searchTerm, $domaine, $entreprise ) {
+                $query->where('domaine_activites_1', 'LIKE', '%' . $domaine . '%')
+                    ->orWhere('entreprise', 'LIKE', '%' . $entreprise . '%')
                     ->orWhere('mobile', 'LIKE', '%' . $searchTerm . '%')
                     ->orWhere('email', 'LIKE', '%' . $searchTerm . '%');
             })
@@ -59,6 +63,28 @@ class ControllerFournisseur extends Controller
     }
 
 
+        public function search_blacklist(Request $request)
+    {
+        $token = $_COOKIE['token'] ?? null;
+        $user_id = $_COOKIE['user_id'] ?? null;
+        //dd("dzefzef");
+        $searchTerm = $request->input('search');
+        $entreprise = $request->input('entreprise');
+        $domaine = $request->input('domaine');
+
+        $fournisseurs = Fournisseur::where('user_id', $user_id)
+            ->where('blaklist', true)
+            ->where(function ($query) use ($searchTerm, $domaine, $entreprise ) {
+                $query->where('domaine_activites_1', 'LIKE', '%' . $domaine . '%')
+                    ->orWhere('entreprise', 'LIKE', '%' . $entreprise . '%')
+                    ->orWhere('mobile', 'LIKE', '%' . $searchTerm . '%')
+                    ->orWhere('email', 'LIKE', '%' . $searchTerm . '%');
+            })
+            ->get();
+
+        return response()->json(['response' => $fournisseurs]);
+    }
+
     public function blacklist()
     {
         #$apiUrl = 'https://bsc-agrement.net/api/fournisseurs/';
@@ -67,8 +93,8 @@ class ControllerFournisseur extends Controller
         $user = $_COOKIE['user']??null;
         $user_id = $_COOKIE['user_id'] ?? null;
 
-        $fournisseurs = Fournisseur::where('user_id',$user_id)->where('blaklist',true)->get();
-       // dd($fournisseurs);
+        $fournisseurs = Fournisseur::where('user_id',$user_id)->where('blaklist',true)->paginate(5);
+       // dd($fournisseurs->links());
         return view('fournisseursBlackliste', compact('fournisseurs','user'));
     }
 
@@ -99,7 +125,10 @@ class ControllerFournisseur extends Controller
     }
 
 
-
+    public function export_f()
+    {
+        return Excel::download(new ExportFourn, 'fournisseurs.xlsx');
+    }
 
     //ajouter les fournisseurs sélectionnés à la liste de l'utilisateur :
     public function setblacklist(Request $request, )

@@ -51,8 +51,12 @@
             <div class="navbar-collapse">
             <nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1">
     <ul class="nav" id="side-menu">
+
         <li >
             <a href="{{ route('dashboard') }}" class="{{ Request::is('dashboard') ? 'active' : '' }}"><i class="fa fa-home nav_icon"></i>Tableau de bord</a>
+        </li>
+        <li >
+            <a href="{{ route('recherche_view') }}" class="{{ Request::is('search_page') ? 'active' : '' }}"><i class="fa fa-search nav_icon"></i>Ajouter nouveau fournisseur</a>
         </li>
 
         <li>
@@ -62,14 +66,14 @@
         <li >
             <a href="{{ route('draft_list') }}" class="{{ Request::is('draft') ? 'active' : '' }}"><i class="fa  fa-user nav_icon"></i>Liste des fournisseurs prospects</a>
         </li>
-
+        <li >
+            <a href="#" ><i class="fa fa-edit nav_icon"></i>Evaluation fournisseur</a>
+        </li>
         <li >
             <a href="{{ route('blacklist') }}" class="{{ Request::is('blacklist') ? 'active' : '' }}"><i class="fa fa-ban nav_icon"></i>Liste des fournisseurs blacklistés</a>
         </li>
 
-        <li >
-            <a href="{{ route('recherche_view') }}" class="{{ Request::is('search_page') ? 'active' : '' }}"><i class="fa fa-search nav_icon"></i>Rechercher</a>
-        </li>
+
     </ul>
 </nav>
 

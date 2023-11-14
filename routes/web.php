@@ -31,6 +31,8 @@ Route::middleware(['token',])->group(function(){
     Route::get('/Rechercherfournisseur', [ControllerFournisseur::class, 'rechercherFournisseur'])->name('recherche');
     Route::get('/search_page', [ControllerFournisseur::class, 'search_view'])->name('recherche_view');
     Route::post('/search_fourn', [ControllerFournisseur::class, 'search'])->name('search_fourn');
+    Route::post('/search_blacklist', [ControllerFournisseur::class, 'search_blacklist'])->name('search_blacklist');
+    Route::post('/search_draft', [DraftController::class, 'search'])->name('search_draft');
 
     // Route::get('/Rechercherfournisseur/{code}', [ControllerFournisseur::class, 'rechercherFournisseur'])->name('recherche');
     Route::post('/Ajouterfournisseur', [ControllerFournisseur::class, 'ajouterFournisseurs'])->name('ajouterfournisseurs');
@@ -41,7 +43,7 @@ Route::middleware(['token',])->group(function(){
     Route::get('/draft', [DraftController::class, 'index'])->name('draft_list');
     Route::post('/draft', [DraftController::class, 'store'])->name('draft_add');
     Route::delete('/draft', [DraftController::class, 'destroy'])->name('draft_destroy');
-
+    Route::get('export/excel', [ControllerFournisseur::class, 'export_f'])->name('export.excel');
 
 });
 

@@ -9,20 +9,29 @@
         <form id="searchForm" method="POST" action="{{ route('search_fourn') }}">
 
 		@csrf
-		<div class="col-md-6" style=" background-color:orange;" >
 
+
+        	<div class="col-md-3">
+			<div class="form-group">
+				<input type="text" name="entreprise" class="form-control search-filter" id="exampleInputEmail3" placeholder="Entreprise">
+			</div>
 		</div>
-
+        	<div class="col-md-3">
+			<div class="form-group">
+				<input type="text" name="search" class="form-control search-filter2" id="exampleInputEmail4" placeholder="Mot clé">
+			</div>
+		</div>
 		<div class="col-md-3">
 			<div class="form-group">
-				<input type="text" name="search" class="form-control" id="exampleInputEmail3" placeholder="domaine">
+				<input type="text" name="domaine" class="form-control search-filter3" id="exampleInputEmail5" placeholder="Domaine d'activité">
 			</div>
 		</div>
 
+
 		<div class="col-md-3">
 
 			<div class="form-group">
-            <button type="button" class="form-group btn-primary search-filter">Rechercher</button>
+            <button type="button" class="form-group btn-primary search-btn">Rechercher</button>
 			</div>
 
 		</div>
@@ -51,7 +60,7 @@
 						<tbody>
 							<tr>
 								<th scope="row">
-									<input type="checkbox">
+                                        <td><input type="checkbox" name="selected_suppliers[]" value="{{ $fourni->id }}" data-email="{{ $fourni->email }}"></td>
                                         <td>{{$fourni->entreprise}}</td>
 										<td>{{$fourni->domaine_activites_1}}</td>
 										<td>{{$fourni->mobile}}</td>
@@ -74,26 +83,64 @@
 							<span style="color: red;">aucun fournisseur enregistrer</span>
 						@endforelse
 					</table>
+                    <div class="row">
 
+							<div class="col-md-3">
+                            <a href="" class="btn btn-success">Export to Excel</a>
+
+						</div>
+						<div class="col-md-3">
+								&nbsp;
+						</div>
+							<div class="col-md-3">
+                                <input type="hidden" name="selected_suppliers_ids" id="selectedSuppliersIds">
+
+								<button type="submit" class="btn btn-primary  mailing-btn" style="float:right;">Mailing to</button>
+						</div>
+
+						</div>
+					</div>
+                    {!! $fournisseurs->links() !!}
 			</div>
 			</div>
 		</div>
 
 
+<script>
+    var searchfilter = document.querySelector('.search-filter');
+    var searchfilter2 = document.querySelector('.search-filter2');
+    var searchfilter3 = document.querySelector('.search-filter3');
+    var searchbtn = document.querySelector('.search-btn');
+    var form = document.getElementById('searchForm');
 
-        <script>
-   var btn = document.querySelector('.search-filter');
-   var form = document.getElementById('searchForm');
-
-   btn.addEventListener('click', function (event) {
-      event.preventDefault(); 
+    searchbtn.addEventListener('click', function (event) {
+      event.preventDefault();
       var formData = new FormData(form);
-      filterSearch(formData.get('search'));
+      filterSearch(formData.get('search'),formData.get('domaine'),formData.get('entreprise'));
    }, true);
 
-   function filterSearch(searchTerm) {
+    searchfilter.addEventListener('input', function (event) {
+      event.preventDefault();
+      var formData = new FormData(form);
+      filterSearch(formData.get('search'),formData.get('domaine'),formData.get('entreprise'));
+   }, true);
+
+ searchfilter2.addEventListener('input', function (event) {
+      event.preventDefault();
+      var formData = new FormData(form);
+      filterSearch(formData.get('search'),formData.get('domaine'),formData.get('entreprise'));
+   }, true);
+
+    searchfilter3.addEventListener('input', function (event) {
+      event.preventDefault();
+      var formData = new FormData(form);
+      filterSearch(formData.get('search'),formData.get('domaine'),formData.get('entreprise'));
+   }, true);
+   function filterSearch(searchTerm,domaine,entreprise) {
       var payload = {
-         "search": searchTerm,
+        "search": searchTerm,
+        "entreprise": entreprise,
+        "domaine": domaine,
       }
 
       $.ajaxSetup({
@@ -147,7 +194,29 @@
             },
       });
    }
+
+   // Update the JavaScript code
+document.querySelector('.mailing-btn').addEventListener('click', function (event) {
+    event.preventDefault();
+    var selectedSuppliers = document.querySelectorAll('input[name="selected_suppliers[]"]:checked');
+    var selectedIds = Array.from(selectedSuppliers).map(function (checkbox) {
+        return checkbox.value;
+    });
+    document.getElementById('selectedSuppliersIds').value = selectedIds.join(',');
+
+    // Get the email addresses of selected suppliers
+    var emails = Array.from(selectedSuppliers).map(function (checkbox) {
+        return checkbox.dataset.email; // Add data-email attribute to your checkbox
+    });
+
+    // Open the default email client
+    var mailtoLink = 'mailto:' + emails.join(',') + '?subject=Subject&body=Body';
+    window.location.href = mailtoLink;
+}, true);
+
 </script>
+
+
 
 
 @endsection

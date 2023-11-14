@@ -40,9 +40,10 @@
 					<div class="clearfix"> </div>
 				</div>
 
-                
-				<div class="row">
-					<div class="col-md-4 stats-info widget ">
+
+				<div class="row ">
+
+                <div class="col-md-6" style="background:#fff;">
 						<div class="stats-title">
 							<h4 class="title">5 domaines les plus fourni</h4>
 						</div>
@@ -81,11 +82,12 @@
 							</ul>
 						</div>
 					</div>
-					<div class="col-md-8 stats-info stats-last widget-shadow">
-						<div class="stats-title">
+
+                    <div class="col-md-6"  style="background:#fff;">
+						<div class="stats-title ">
 							<h4 class="title">5 domaines les moins fourni</h4>
 						</div>
-						<div class="stats-body">
+						<div class="stats-body " >
 							<ul class="list-unstyled">
 								<li>GoogleChrome <span class="pull-right">85%</span>
 									<div class="progress progress-striped active progress-right">
@@ -119,6 +121,8 @@
 								</li>
 							</ul>
 						</div>
-					<div class="clearfix"> </div>
+					</div>
 				</div>
+        </div>
+    </div>
 @endsection

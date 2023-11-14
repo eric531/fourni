@@ -17,24 +17,34 @@ class DraftController extends Controller
         $token = $_COOKIE['token'] ?? null;
         $user = $_COOKIE['user'] ?? null;
         $user_id = $_COOKIE['user_id'] ?? null;
-        $fournisseurs = Draft::where('user_id',$user_id)->get();
+        $fournisseurs = Draft::where('user_id',$user_id)->paginate(5);
 
 
         return view("fournisseursProspects", compact("fournisseurs","user"));
     }
 
 
-    public function serach(Request $request)
+    public function search(Request $request)
     {
 
         $token = $_COOKIE['token'] ?? null;
         $user = $_COOKIE['user']??null;
         $user_id = $_COOKIE['user_id'] ?? null;
 
-        $p = $request->input('search');
+        $searchTerm = $request->input('search');
+        $entreprise = $request->input('entreprise');
+        $domaine = $request->input('domaine');
+        
+        $fournisseurs = Draft::where('user_id',$user_id)
+        ->where(function ($query) use ($searchTerm, $domaine, $entreprise ) {
+            $query->where('domaine_activites_1', 'LIKE', '%' . $domaine . '%')
+                ->orWhere('entreprise', 'LIKE', '%' . $entreprise . '%')
+                ->orWhere('mobile', 'LIKE', '%' . $searchTerm . '%')
+                ->orWhere('email', 'LIKE', '%' . $searchTerm . '%');
+        })
+        ->get();
 
-        $fournisseurs = Draft::where('user_id',$user_id)->where('domaine_activites_1',$p);
-        return response()->json(['data'=> $fournisseurs]);
+        return response()->json(['response'=> $fournisseurs]);
     }
 
 
