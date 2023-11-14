@@ -34,13 +34,13 @@ class DraftController extends Controller
         $searchTerm = $request->input('search');
         $entreprise = $request->input('entreprise');
         $domaine = $request->input('domaine');
-        
+
         $fournisseurs = Draft::where('user_id',$user_id)
         ->where(function ($query) use ($searchTerm, $domaine, $entreprise ) {
             $query->where('domaine_activites_1', 'LIKE', '%' . $domaine . '%')
-                ->orWhere('entreprise', 'LIKE', '%' . $entreprise . '%')
-                ->orWhere('mobile', 'LIKE', '%' . $searchTerm . '%')
-                ->orWhere('email', 'LIKE', '%' . $searchTerm . '%');
+                ->where('entreprise', 'LIKE', '%' . $entreprise . '%')
+                ->where('mobile', 'LIKE', '%' . $searchTerm . '%')
+                ->where('email', 'LIKE', '%' . $searchTerm . '%');
         })
         ->get();
 

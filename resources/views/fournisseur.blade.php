@@ -86,7 +86,7 @@
                     <div class="row">
 
 							<div class="col-md-3">
-                            <a href="" class="btn btn-success">Export to Excel</a>
+                            <a href="{{ route('export.excel') }}" class="btn btn-success">Export to Excel</a>
 
 						</div>
 						<div class="col-md-3">

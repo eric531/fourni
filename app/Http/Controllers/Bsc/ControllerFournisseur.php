@@ -53,9 +53,9 @@ class ControllerFournisseur extends Controller
             ->where('blaklist', false)
             ->where(function ($query) use ($searchTerm, $domaine, $entreprise ) {
                 $query->where('domaine_activites_1', 'LIKE', '%' . $domaine . '%')
-                    ->orWhere('entreprise', 'LIKE', '%' . $entreprise . '%')
-                    ->orWhere('mobile', 'LIKE', '%' . $searchTerm . '%')
-                    ->orWhere('email', 'LIKE', '%' . $searchTerm . '%');
+                    ->where('entreprise', 'LIKE', '%' . $entreprise . '%')
+                    ->where('mobile', 'LIKE', '%' . $searchTerm . '%')
+                    ->where('email', 'LIKE', '%' . $searchTerm . '%');
             })
             ->get();
 
@@ -76,9 +76,9 @@ class ControllerFournisseur extends Controller
             ->where('blaklist', true)
             ->where(function ($query) use ($searchTerm, $domaine, $entreprise ) {
                 $query->where('domaine_activites_1', 'LIKE', '%' . $domaine . '%')
-                    ->orWhere('entreprise', 'LIKE', '%' . $entreprise . '%')
-                    ->orWhere('mobile', 'LIKE', '%' . $searchTerm . '%')
-                    ->orWhere('email', 'LIKE', '%' . $searchTerm . '%');
+                    ->where('entreprise', 'LIKE', '%' . $entreprise . '%')
+                    ->where('mobile', 'LIKE', '%' . $searchTerm . '%')
+                    ->where('email', 'LIKE', '%' . $searchTerm . '%');
             })
             ->get();
 

@@ -12,6 +12,10 @@ class ExportFourn implements FromCollection
     */
     public function collection()
     {
-        return Fournisseur::all();
+        $token = $_COOKIE['token'] ?? null;
+        $user = $_COOKIE['user']??null;
+        $user_id = $_COOKIE['user_id'] ?? null;
+        
+        return Fournisseur::where('user_id',$user_id)->where('blaklist',false)->paginate(5);
     }
 }
