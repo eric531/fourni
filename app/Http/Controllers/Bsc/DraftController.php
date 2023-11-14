@@ -1,9 +1,11 @@
 <?php
 
 namespace App\Http\Controllers\Bsc;
+use App\Exports\ExportDraft;
 use App\Models\Draft;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Maatwebsite\Excel\Facades\Excel;
 
 class DraftController extends Controller
 {
@@ -49,6 +51,10 @@ class DraftController extends Controller
 
 
 
+    public function export_draft()
+    {
+        return Excel::download(new ExportDraft, 'blacklist.xlsx');
+    }
     /**
      * Store a newly created resource in storage.
      *

@@ -101,6 +101,34 @@
 							<span style="color: red;">aucun fournisseur enregistrer</span>
 						@endforelse
 					</table>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <button type="submit" class="btn btn-primary  mailing-btn" style="">Filter Selection</button>
+
+
+					    </div>
+                        <div class="col-md-3">
+                            <button type="submit" class="btn btn-primary  mailing-btn" style="">Export to PDF</button>
+
+						</div>
+						<div class="col-md-3">
+                            <a href="{{ route('export.draft') }}" class="btn btn-success">Export to Excel</a>
+
+						</div>
+						<div class="col-md-3">
+								&nbsp;
+						</div>
+							<div class="col-md-3">
+                                <input type="hidden" name="selected_suppliers_ids" id="selectedSuppliersIds">
+
+								<button type="submit" class="btn btn-primary  mailing-btn" style="">Mailing to</button>
+                                <button type="submit" class="btn btn-primary" style="float:right;">Mailing list</button>
+						</div>
+
+                       
+						
+						</div>
+					</div>
                     {!! $fournisseurs->links() !!}
 			</div>
 			</div>

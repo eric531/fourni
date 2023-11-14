@@ -44,6 +44,8 @@ Route::middleware(['token',])->group(function(){
     Route::post('/draft', [DraftController::class, 'store'])->name('draft_add');
     Route::delete('/draft', [DraftController::class, 'destroy'])->name('draft_destroy');
     Route::get('export/excel', [ControllerFournisseur::class, 'export_f'])->name('export.excel');
+    Route::get('export/black', [ControllerFournisseur::class, 'export_black'])->name('export.blacklist');
+    Route::get('export/draft', [DraftController::class, 'export_draft'])->name('export.draft');
 
 });
 

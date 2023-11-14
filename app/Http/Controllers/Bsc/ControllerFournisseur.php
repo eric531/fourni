@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Bsc;
 
+use App\Exports\ExportBlack;
 use App\Exports\ExportFourn;
 use App\Models\Draft;
 use Illuminate\Http\Request;
@@ -128,6 +129,11 @@ class ControllerFournisseur extends Controller
     public function export_f()
     {
         return Excel::download(new ExportFourn, 'fournisseurs.xlsx');
+    }
+
+    public function export_black()
+    {
+        return Excel::download(new ExportBlack, 'blacklist.xlsx');
     }
 
     //ajouter les fournisseurs sélectionnés à la liste de l'utilisateur :
