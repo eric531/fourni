@@ -26,7 +26,7 @@ use App\Http\Controllers\Auth\AdminAuthenticatedSessionController;
 
 
 
-Route::middleware(['token'])->group(function(){
+Route::middleware(['token','abonnement'])->group(function(){
 
     // Route::get('/', function () {
     //     return view('welcome');

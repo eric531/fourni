@@ -18,7 +18,9 @@ class CheckUserSubscriptionMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        if ($this->checkActiveAbonnement($request->user()->user_id)) {
+        $user = $_COOKIE['user']??null;
+
+        if ($this->checkActiveAbonnement($user)) {
             return $next($request);
         }
 
