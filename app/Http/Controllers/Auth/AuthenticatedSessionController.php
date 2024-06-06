@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Cookie;
 
+
 class AuthenticatedSessionController extends Controller
 {
     /**
@@ -48,6 +49,8 @@ class AuthenticatedSessionController extends Controller
             $token = $decode->data->token;
             $user =  $decode->data->user->name;
             $user_id =  $decode->data->user->id;
+
+            // check if subscription is update
 
             // Stockez le token en tant que cookie
             setcookie('token', $token, time() + 86400, '/', null, false, true);

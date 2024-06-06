@@ -4,7 +4,11 @@ use App\Http\Controllers\Bsc\ControllerFournisseur;
 use App\Http\Controllers\Bsc\DashboardController;
 
 use App\Http\Controllers\Bsc\DraftController;
+use App\Http\Controllers\Admin\EntrepriseController;
+use App\Http\Controllers\Admin\AbonnementController;
+use App\Http\Controllers\Admin\AdminDashboardController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\AdminAuthenticatedSessionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,7 +26,7 @@ use Illuminate\Support\Facades\Route;
 
 
 
-Route::middleware(['token',])->group(function(){
+Route::middleware(['token'])->group(function(){
 
     // Route::get('/', function () {
     //     return view('welcome');
@@ -50,4 +54,19 @@ Route::middleware(['token',])->group(function(){
 });
 
 
+Route::namespace('Auth')->middleware('guest')->group(function(){
+    // login route
+    Route::get('/admin/login',[AdminAuthenticatedSessionController::class, 'create'])->name('admin.login');
+    Route::post('/admin/login',[AdminAuthenticatedSessionController::class, 'store'])->name('adminlogin');
+});
+
+Route::middleware(['auth','admin'])->group(function(){
+
+    Route::get('/admin/dashboard',[AdminDashboardController::class, 'index']);
+    Route::resource('admin/entreprises',EntrepriseController::class);
+    Route::resource('admin/abonnements',AbonnementController::class);
+
+
+
+});
 require __DIR__.'/auth.php';
