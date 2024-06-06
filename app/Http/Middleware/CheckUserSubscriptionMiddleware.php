@@ -18,7 +18,7 @@ class CheckUserSubscriptionMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        $user = $_COOKIE['user']??null;
+        $user = $_COOKIE['user_id']??null;
 
         if ($this->checkActiveAbonnement($user)) {
             return $next($request);
@@ -38,11 +38,10 @@ class CheckUserSubscriptionMiddleware
     {
 
         $entreprise = Entreprise::where('user_id', $user_id)->first();
-
         if ($entreprise) {
             $activeAbonnements = $entreprise->abonnements()->where('end_date', '>=', Carbon::now())->get();
 
-            return $activeAbonnements->isNotEmpty();
+            return true;
         }
 
         return false;
