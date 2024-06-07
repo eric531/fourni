@@ -5,7 +5,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->
-	<link rel="icon" type="image/png" href="{{url('styles/img/logo.jpeg')}}"/>
+	<link rel="icon" type="image/png" href="{{url('styles/uploads/logo.png')}}"/>
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="{{asset('vendor/bootstrap/css/bootstrap.min.css')}}">
 <!--===============================================================================================-->
@@ -38,7 +38,7 @@
 				</ul>
 			</div>
 			@endif
-                    <img src="{{url('images/logos/logo.png')}}" class="logo logo-display m-top-10" alt="IMG" >
+                    <img src="{{url('styles/uploads/logo.png')}}" class="logo logo-display m-top-10" alt="IMG" >
 				</div>
 
                 <form method="POST" action="{{ route('admin.login') }}" class="login100-form validate-form">

@@ -15,19 +15,19 @@
 		<link
 			rel="apple-touch-icon"
 			sizes="180x180"
-			href="{{asset('vendors/images/apple-touch-icon.png')}}"
+			href="{{asset('styles/uploads/logo.png')}}"
 		/>
 		<link
 			rel="icon"
 			type="image/png"
 			sizes="32x32"
-			href="{{asset('vendors/images/favicon-32x32.png')}}"
+			href="{{asset('styles/uploads/logo.png')}}"
 		/>
 		<link
 			rel="icon"
 			type="image/png"
 			sizes="16x16"
-			href="{{asset('vendors/images/favicon-16x16.png')}}"
+			href="{{asset('styles/uploads/logo.png')}}"
 		/>
 
 		<!-- Mobile Specific Metas -->
@@ -97,7 +97,7 @@
 <body>
 	<div class="pre-loader">
 		<div class="pre-loader-box">
-			<div class="loader-logo"><img src="{{asset('vendors/images/deskapp-logo.svg')}}" alt=""></div>
+			<div class="loader-logo"><img src="{{asset('styles/uploads/logo.png')}}" alt=""></div>
 			<div class='loader-progress' id="progress_div">
 				<div class='bar' id='bar1'></div>
 			</div>
@@ -218,8 +218,8 @@
 	<div class="left-side-bar">
 		<div class="brand-logo">
 			<a href="/">
-				<img src="{{asset('vendors/images/deskapp-logo.svg')}}" alt="" class="dark-logo">
-				<img src="{{asset('vendors/images/deskapp-logo-white.svg')}}" alt="" class="light-logo">
+				<img src="{{asset('styles/uploads/logo.png')}}" alt="" class="dark-logo">
+				<img src="{{asset('styles/uploads/logo.png')}}" alt="" class="light-logo">
 			</a>
 			<div class="close-sidebar" data-toggle="left-sidebar-close">
 				<i class="ion-close-round"></i>

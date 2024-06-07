@@ -24,7 +24,9 @@ use App\Http\Controllers\Auth\AdminAuthenticatedSessionController;
 
 // Route::get('/teste', [ControllerUser::class, 'index']);
 
-
+Route::get('/', function () {
+    return redirect('/login');
+});
 
 Route::middleware(['token','abonnement'])->group(function(){
 
