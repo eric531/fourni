@@ -37,7 +37,7 @@
                                     <td>
 										<form action="{{route('blacklist_set',['id'=>$fourn->id])}}" method="post">
                                             @method('_put')
-                                            <button type="submit" class="btn btn-primary"> add to Blaclist</button>
+                                            <button type="submit" class="btn btn-primary"> ajouter a la  liste noir</button>
                                         </form>
 									</td>
 							</tr>

@@ -188,11 +188,12 @@ class ControllerFournisseur extends Controller
         $searchfournisseur = $data["data"]['data'];
         if( $searchfournisseur !=null){
         $produits_services = json_decode($searchfournisseur['produits_services'])[0];
-        $interlocuteur =json_decode($searchfournisseur['interlocuteur'])[0];
+        $interlocuteurs =json_decode($searchfournisseur['interlocuteur']);
+        //dd($searchfournisseur['interlocuteur']);
         }
       #dd($interlocuteur->interloc_nom);
         if (isset($searchfournisseur) || $searchfournisseur !=null){
-            return view('search', compact('searchfournisseur','user','interlocuteur','produits_services'));
+            return view('search', compact('searchfournisseur','user','interlocuteurs','produits_services'));
         } else {
             return back()->with('error', 'Fournisseur non trouvé.');
         }
