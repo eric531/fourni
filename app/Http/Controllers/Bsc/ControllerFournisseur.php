@@ -122,7 +122,7 @@ class ControllerFournisseur extends Controller
 
         $data['user_id']= $user_id;
         $data['blaklist']= false;
-        //dd($data);
+        // dd($data);
         $fournisseurs = Fournisseur::create($data);
         $draft = Draft::findOrFail(intval($request['id']));
         $draft->delete();
