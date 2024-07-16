@@ -36,6 +36,12 @@
             </div>
           </div>
           <div class="form-group row">
+            <label class="col-sm-12 col-md-2 col-form-label">Logo</label>
+            <div class="col-sm-12 col-md-10">
+              <input class="form-control" type="file" name="logo" id="logo">
+            </div>
+          </div>
+          <div class="form-group row">
             <label class="col-sm-12 col-md-2 col-form-label">Acheteur</label>
             <div class="col-sm-12 col-md-10">
             <select class="form-control" name="user_id" id="acheteur">
@@ -92,6 +98,7 @@ function saveChanges() {
   let adresseInput = document.getElementById('adresse');
   let emailInput = document.getElementById('email');
   let telephoneInput = document.getElementById('telephone');
+  let logoInput = document.getElementById('logo');
   let userInput = document.getElementById('acheteur');
 
 
@@ -99,6 +106,7 @@ function saveChanges() {
   let adresse = adresseInput.value;
   let email = emailInput.value;
   let telephone = telephoneInput.value;
+  let logo = logoInput.files[0]; 
   let user = userInput.value;
 
   let formData = new FormData();
@@ -106,6 +114,7 @@ function saveChanges() {
   formData.append('adresse', adresse);
   formData.append('email', email);
   formData.append('telephone', telephone);
+  formData.append('logo', logo);
   formData.append('user_id', user);
 
   formData.append('_method', editingEntrepriseId ? 'PUT' : 'POST');

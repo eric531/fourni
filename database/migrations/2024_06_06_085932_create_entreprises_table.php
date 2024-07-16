@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('adresse');
             $table->string('email');
             $table->string('telephone');
+            $table->string('logo')->nullable();
             $table->timestamps();
         });
     }

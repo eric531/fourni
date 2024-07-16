@@ -66,15 +66,20 @@
         <li >
             <a href="{{ route('draft_list') }}" class="{{ Request::is('draft') ? 'active' : '' }}"><i class="fa  fa-user nav_icon"></i>Liste des fournisseurs prospects</a>
         </li>
-        <li >
+        <!-- <li >
             <a href="#" ><i class="fa fa-edit nav_icon"></i>Evaluation fournisseur</a>
-        </li>
+        </li> -->
         <li >
             <a href="{{ route('blacklist') }}" class="{{ Request::is('blacklist') ? 'active' : '' }}"><i class="fa fa-ban nav_icon"></i>Liste des fournisseurs blacklistés</a>
         </li>
 
 
     </ul>
+    <div class="logo " style="background:#fff; position:absolute; height:200px; bottom: 100px;">
+    <a href="#" style="position:absolute; bottom:0; width:100%;">
+        <h1 style="margin:0;"><img style="background:#fff; height:60px; width:auto;" src="{{asset('styles/uploads/logo.png')}}" alt="Logo"></h1>
+    </a>
+</div>
 </nav>
 
 			</div>
@@ -87,9 +92,9 @@
 				<button id="showLeftPush"><i class="fa fa-bars"></i></button>
 				<!--toggle button end-->
 				<!--logo -->
-				<div class="logo" style="background:#fff;" >
+				<div class="logo" style="background:#fff; " >
 					<a href="#">
-						<h1><img style="background:#fff;height:60px;" src="{{asset('styles/uploads/logo.png')}}"></h1>
+                    <h1><img style="background:#fff;height:50px; border-radius:70px;" src="{{ asset('storage/' . $logo) }}"></h1>
 
 					</a>
 				</div>

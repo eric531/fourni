@@ -98,7 +98,7 @@
                 <div class="text-score">
                 <strong>Score agrément : </strong>
             </div>
-            <div id="progress-pie-chart" data-percent="25">
+            <!-- <div id="progress-pie-chart" data-percent="25">
             <div class="ppc-progress">
             <div class="ppc-progress-fill"></div>
             </div>
@@ -107,7 +107,7 @@
                 <span class="my-value">%</span>
                 </div>
             </div>
-            </div>
+            </div> -->
             </div>
             <p> <strong>Statut :</strong>
                                         </p>

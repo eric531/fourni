@@ -8,6 +8,7 @@ use App\Models\Draft;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Fournisseur;
+use App\Models\Entreprise;
 use GuzzleHttp\Client;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -25,9 +26,12 @@ class ControllerFournisseur extends Controller
         $user = $_COOKIE['user']??null;
         $user_id = $_COOKIE['user_id'] ?? null;
 
+        $logoE = Entreprise::where("user_id",$user_id)->first();
+        $logo =$logoE->logo;
+
         $fournisseurs = Fournisseur::where('user_id',$user_id)->where('blaklist',false)->paginate(5);
        // dd($fournisseurs);
-        return view('fournisseur', compact('fournisseurs','user'));
+        return view('fournisseur', compact('fournisseurs','user','logo'));
     }
 
 
@@ -38,14 +42,16 @@ class ControllerFournisseur extends Controller
         $token = $_COOKIE['token'] ?? null;
         $user = $_COOKIE['user']??null;
         $user_id = $_COOKIE['user_id'] ?? null;
+        $logoE = Entreprise::where("user_id",$user_id)->first();
+        $logo =$logoE->logo;
 
-        return view('search', compact('user'));
+        return view('search', compact('user','logo'));
     }
     public function search(Request $request)
     {
         $token = $_COOKIE['token'] ?? null;
         $user_id = $_COOKIE['user_id'] ?? null;
-        //dd("dzefzef");
+
         $searchTerm = $request->input('search');
         $entreprise = $request->input('entreprise');
         $domaine = $request->input('domaine');
@@ -93,10 +99,12 @@ class ControllerFournisseur extends Controller
         $token = $_COOKIE['token'] ?? null;
         $user = $_COOKIE['user']??null;
         $user_id = $_COOKIE['user_id'] ?? null;
+             $logoE = Entreprise::where("user_id",$user_id)->first();
+        $logo =$logoE->logo;
 
         $fournisseurs = Fournisseur::where('user_id',$user_id)->where('blaklist',true)->paginate(5);
        // dd($fournisseurs->links());
-        return view('fournisseursBlackliste', compact('fournisseurs','user'));
+        return view('fournisseursBlackliste', compact('fournisseurs','user','logo'));
     }
 
     //ajouter les fournisseurs sélectionnés à la liste de l'utilisateur :
@@ -126,14 +134,20 @@ class ControllerFournisseur extends Controller
     }
 
 
-    public function export_f()
+    // public function export_f()
+    // {
+    //     return Excel::download(new ExportFourn, 'fournisseurs.xlsx');
+    // }
+    public function export_f(Request $request)
     {
-        return Excel::download(new ExportFourn, 'fournisseurs.xlsx');
-    }
 
-    public function export_black()
+        $selectedSupplierIds = explode(',', intval($request->input('selected_suppliers_ids', '')));
+        return Excel::download(new ExportFourn($selectedSupplierIds), 'fournisseurs.xlsx');
+    }
+    public function export_black(Request $request)
     {
-        return Excel::download(new ExportBlack, 'blacklist.xlsx');
+        $selectedSupplierIds = explode(',', intval($request->input('selected_suppliers_ids', '')));
+        return Excel::download(new ExportBlack($selectedSupplierIds), 'blacklist.xlsx');
     }
 
     //ajouter les fournisseurs sélectionnés à la liste de l'utilisateur :
@@ -169,7 +183,10 @@ class ControllerFournisseur extends Controller
 
         $token = $_COOKIE['token'] ?? null;
         $user = $_COOKIE['user']??null;
+        $user_id = $_COOKIE['user_id']??null;
         $client = new Client();
+        $logoE = Entreprise::where("user_id",$user_id)->first();
+        $logo =$logoE->logo;
 
 
 
@@ -193,7 +210,7 @@ class ControllerFournisseur extends Controller
         }
       #dd($interlocuteur->interloc_nom);
         if (isset($searchfournisseur) || $searchfournisseur !=null){
-            return view('search', compact('searchfournisseur','user','interlocuteurs','produits_services'));
+            return view('search', compact('searchfournisseur','user','interlocuteurs','produits_services','logo'));
         } else {
             return back()->with('error', 'Fournisseur non trouvé.');
         }

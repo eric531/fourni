@@ -56,15 +56,33 @@ class EntrepriseController extends Controller
             'telephone' => 'required|string|max:20',
             'user_id'=>'required|string|max:20',
         ]);
+        $imagePath="";
+        if ($request->hasFile('logo')) {
 
-        Entreprise::create([
-            'nom' => $request->nom,
-            'adresse' => $request->adresse,
-            'email' => $request->email,
-            'telephone' => $request->telephone,
-            'user_id'=>$request->user_id,
-        ]);
+            $imagePath = $request->file('logo')->store('logos', 'public');
+            Entreprise::create([
+                'nom' => $request->nom,
+                'adresse' => $request->adresse,
+                'email' => $request->email,
+                'telephone' => $request->telephone,
+                'user_id'=>$request->user_id,
+                'logo'=>$imagePath
+            ]);
+        }else{
+            Entreprise::create([
+                'nom' => $request->nom,
+                'adresse' => $request->adresse,
+                'email' => $request->email,
+                'telephone' => $request->telephone,
+                'user_id'=>$request->user_id,
+            ]);
+        }
+
         $entreprises = Entreprise::paginate(10);
+
+
+
+
         return response()->json(['success' => true, 'message' => 'Entreprise créée avec succès.', 'entreprises' => $entreprises], 200);
 
         // return redirect()->route('admin.entreprises')->with('success', 'Entreprise créée avec succès');
@@ -100,14 +118,28 @@ class EntrepriseController extends Controller
             'email' => 'required|email|max:255|unique:entreprises,email,' . $id,
             'telephone' => 'required|string|max:20',
         ]);
-
         $entreprise = Entreprise::findOrFail($id);
-        $entreprise->update([
-            'nom' => $request->nom,
-            'adresse' => $request->adresse,
-            'email' => $request->email,
-            'telephone' => $request->telephone,
-        ]);
+        $imagePath="";
+        if ($request->hasFile('logo')) {
+
+            $imagePath = $request->file('logo')->store('logos', 'public');
+            $entreprise->update([
+                'nom' => $request->nom,
+                'adresse' => $request->adresse,
+                'email' => $request->email,
+                'telephone' => $request->telephone,
+                'logo'=>$imagePath
+            ]);
+        }else{
+            $entreprise->update([
+                'nom' => $request->nom,
+                'adresse' => $request->adresse,
+                'email' => $request->email,
+                'telephone' => $request->telephone,
+            ]);
+        }
+
+
         $entreprises = Entreprise::paginate(10);
         return response()->json(['success' => true, 'message' => 'Entreprise modifie avec succès.', 'entreprises' => $entreprises], 200);
 

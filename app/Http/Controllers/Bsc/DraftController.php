@@ -6,6 +6,7 @@ use App\Models\Draft;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Maatwebsite\Excel\Facades\Excel;
+use App\Models\Entreprise;
 
 class DraftController extends Controller
 {
@@ -20,9 +21,11 @@ class DraftController extends Controller
         $user = $_COOKIE['user'] ?? null;
         $user_id = $_COOKIE['user_id'] ?? null;
         $fournisseurs = Draft::where('user_id',$user_id)->paginate(5);
+        $user_id = $_COOKIE['user_id'] ?? null;
 
-
-        return view("fournisseursProspects", compact("fournisseurs","user"));
+        $logoE = Entreprise::where("user_id",$user_id)->first();
+        $logo =$logoE->logo;
+        return view("fournisseursProspects", compact("fournisseurs","user","logo"));
     }
 
 

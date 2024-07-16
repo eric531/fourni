@@ -49,9 +49,9 @@ Route::middleware(['token','abonnement'])->group(function(){
     Route::get('/draft', [DraftController::class, 'index'])->name('draft_list');
     Route::post('/draft', [DraftController::class, 'store'])->name('draft_add');
     Route::delete('/draft', [DraftController::class, 'destroy'])->name('draft_destroy');
-    Route::get('export/excel', [ControllerFournisseur::class, 'export_f'])->name('export.excel');
-    Route::get('export/black', [ControllerFournisseur::class, 'export_black'])->name('export.blacklist');
-    Route::get('export/draft', [DraftController::class, 'export_draft'])->name('export.draft');
+    Route::post('export/excel', [ControllerFournisseur::class, 'export_f'])->name('export.excel');
+    Route::post('export/black', [ControllerFournisseur::class, 'export_black'])->name('export.blacklist');
+    Route::post('export/draft', [DraftController::class, 'export_draft'])->name('export.draft');
 
 });
 
