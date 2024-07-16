@@ -56,10 +56,10 @@
                             <td>{{ $fourni->email }}</td>
                             <td><span class="badge badge-danger">Voir fiche</span></td>
                             <td>
-                                <form action="{{ route('blacklist_set') }}" method="post">
+                                <form action="{{ route('ajouterfournisseurs') }}" method="post">
                                     @csrf
                                     <input type="hidden" name="id" value="{{ $fourni->id }}">
-                                    <button type="submit" class="btn btn-primary">Liste noire</button>
+                                    <button type="submit" class="btn btn-primary">Ajouter</button>
                                 </form>
                             </td>
                         </tr>
