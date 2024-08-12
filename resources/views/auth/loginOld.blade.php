@@ -9,19 +9,19 @@
 	<!-- Stylesheets
 	============================================= -->
 	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,400i,700|Raleway:300,400,500,600,700|Crete+Round:400i" rel="stylesheet" type="text/css" />
-	<link rel="stylesheet" href="{{asset('/styles/css/login/bootstrap.css')}}" type="text/css" />
-	<link rel="stylesheet" href="{{asset('/styles/css/login/style.css')}}" type="text/css" />
-	<!-- <link rel="stylesheet" href="{{asset('/styles/css/login/dark.css')}}" type="text/css" /> -->
-	<link rel="stylesheet" href="{{asset('/styles/css/login/font-icons.css')}}" type="text/css" />
-	<link rel="stylesheet" href="{{asset('/styles/css/login/animate.css')}}" type="text/css" />
-	<link rel="stylesheet" href="{{asset('/styles/css/login/magnific-popup.css')}}" type="text/css" />
+	<link rel="stylesheet" href="{{asset('css/login/bootstrap.css')}}" type="text/css" />
+	<link rel="stylesheet" href="{{asset('css/login/style.css')}}" type="text/css" />
+	<link rel="stylesheet" href="{{asset('css/login/dark.css')}}" type="text/css" />
+	<link rel="stylesheet" href="{{asset('css/login/font-icons.css')}}" type="text/css" />
+	<link rel="stylesheet" href="{{asset('css/login/animate.css')}}" type="text/css" />
+	<link rel="stylesheet" href="{{asset('css/login/magnific-popup.css')}}" type="text/css" />
 
-	<link rel="stylesheet" href="{{asset('/styles/css/login/responsive.css')}}" type="text/css" />
+	<link rel="stylesheet" href="{{asset('css/login/responsive.css')}}" type="text/css" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 
 	<!-- Document Title
 	============================================= -->
-	<title>Logiciel | Bsc-agrement</title>
+	<title>Login - Layout 4 | Canvas</title>
 
 </head>
 
@@ -37,32 +37,29 @@
 
 			<div class="content-wrap nopadding">
 
-				<div class="section nopadding nomargin" style="width: 100%; height: 100%; position: absolute; left: 0; top: 0; background: #ffff;"></div>
+				<div class="section nopadding nomargin" style="width: 100%; height: 100%; position: absolute; left: 0; top: 0; background: #444;"></div>
 
 				<div class="section nobg full-screen nopadding nomargin">
 					<div class="container-fluid vertical-middle divcenter clearfix">
 
-						
+						<div class="center">
+							<a href="index.html"><img src="{{asset('styles/uploads/logo.png')}}" alt="Logo-Bsc-agrement"></a>
+						</div>
 
 						<div class="card divcenter noradius noborder" style="max-width: 400px;">
-							<div class="card-body" style="padding: 40px;border:1px solid; border-radius:9px; border-color:#003399">
+							<div class="card-body" style="padding: 40px;">
 								<form id="login-form" name="login-form" class="nobottommargin" method="POST" action="{{ route('login') }}">
                                 @csrf
-								<div class="center">
-							<a href="index.html"><img src="{{asset('styles/uploads/logo.png')}}" alt="Logo-Bsc-agrement" style="height: 50px;"></a>
-						</div>
-                                    <span style='text-align:center; display:flex; justify-content:center'>Connectez vous à votre compte</span>
-									<br>
-									<hr>
+                                    <h3>Connectez vous à votre compte</h3>
 
 									<div class="col_full">
-										<label for="login-form-username">Email <span style='color:red'>*</span>:</label>
-										<input type="text" name="email" id="login-form-username" placeholder="Adresse E-mail"  name="email" class="form-control not-dark" />
+										<label for="login-form-username">Email:</label>
+										<input type="text" name="email" id="login-form-username" name="email value="" class="form-control not-dark" />
 									</div>
 
 									<div class="col_full">
-										<label for="login-form-password">Mot de passe <span style='color:red'>*</span>:</label>
-										<input type="password" name="password" id="login-form-password" placeholder="Entrer mot de passe" value="" class="form-control not-dark" />
+										<label for="login-form-password">Password:</label>
+										<input type="password" name="password" id="login-form-password" value="" class="form-control not-dark" />
 									</div>
 
 									<div class="col_full nobottommargin">
@@ -82,7 +79,7 @@
 							</div>
 						</div>
 
-						<div class="center dark"><small>Copyrights &copy; 2022- {{date('Y')}} <span style="color:red">BSC Logiciel Fournisseurs agréés </span> -Tous droits réservés</small></div>
+						<div class="center dark"><small>Copyrights &copy; 2022 BSC Logiciel Fournisseurs agréés -Tous droits réservés</small></div>
 
 					</div>
 				</div>
@@ -99,12 +96,12 @@
 
 	<!-- External JavaScripts
 	============================================= -->
-	<script src="{{asset('/styles/js/login/jquery.js')}}"></script>
-	<script src="{{asset('/styles/js/login/plugins.js')}}"></script>
+	<script src="{{asset('js/login/jquery.js')}}"></script>
+	<script src="{{asset('js/login/plugins.js')}}"></script>
 
 	<!-- Footer Scripts
 	============================================= -->
-	<script src="{{asset('/styles/js/login/functions.js')}}"></script>
+	<script src="{{asset('js/login/functions.js')}}"></script>
 
 </body>
 </html>
