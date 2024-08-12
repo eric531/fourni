@@ -8,8 +8,9 @@
         <div class="row-one">
             <div class="col-md-4 widget">
                 <div class="stats-left">
-                    <h5>NOMBRE</h5>
-                    <h4>FOURNISSEURS AGRÉÉS</h4>
+                    <h6 style="color:#fff">TOTAL</h6>
+                    <br>
+                    <h5>FOURNISSEURS AGRÉÉS</h5>
                 </div>
                 <div class="stats-right">
                     <label>{{ $fourn_agree }}</label>
@@ -18,18 +19,18 @@
             </div>
             <div class="col-md-4 widget states-mdl">
                 <div class="stats-left">
-                    <h5>NOMBRE</h5>
-                    <h4>FOURNISSEURS PROSPECTS</h4>
+                    <h6 style="color:#fff">TOTAL</h6><br>
+                    <h5>FOURNISSEURS PROSPECTS</h5>
                 </div>
                 <div class="stats-right">
                     <label>{{ $fourn_draft }}</label>
                 </div>
-                <div class="clearfix"> </div>
+                
             </div>
             <div class="col-md-4 widget states-last">
                 <div class="stats-left">
-                    <h5>NOMBRE DE</h5>
-                    <h4>FOURNISSEURS BLACKLISTÉS</h4>
+                    <h6 style="color:#fff">TOTAL</h6> <br>
+                    <h5>FOURNISSEURS BLACKLISTÉS</h5>
                 </div>
                 <div class="stats-right">
                     <label>{{ $fourn_blacklist }}</label>

@@ -10,31 +10,50 @@
     <div style="color: green;">{{ session('success') }}</div>
 @endif
 
-<h1>Détails du fournisseur</h1>
 
-<h3>Ajouter un fournisseur</h3>
-<form method="GET" action="{{ route('recherche') }}">
-    @csrf
-    <div class="row">
-        <div class="col-md-6" style="background-color: orange;">
-            <center style="font-size: 18px; text-align: center; padding-top: 3px;">
-                Rechercher un fournisseur agrée
-            </center>
-        </div>
 
-        <div class="col-md-3">
-            <div class="form-group">
-                <input type="text" name="code_fournisseur" class="form-control" placeholder="code: FCIxxxxx0">
+<div id="page-wrapper">
+
+<div class="main-page">
+        <div class="tables">
+        
+
+
+            <div class="table-responsive bs-example widget-shadow" style="background-color:#fff; border-radius:10px">
+            <h4>Réchercher un fournisseur</h4>
+            <div style="height: 50px;background-color:#8080806b; color: #000; padding:5px; border-radius:10px">
+                    <em>Cette section est réservée pour réchercher un fournisseur<em>
             </div>
-        </div>
+                <form method="GET" action="{{ route('recherche') }}">
+                    @csrf
+                    <div class="row">
+                        <div class="col-md-6" style="background-color: #5cb85c;border-radius:10px">
+                            <center style="font-size: 18px; text-align: center; padding-top: 3px;">
+                                Rechercher un fournisseur agrée
+                            </center>
+                        </div>
 
-        <div class="col-md-3">
-            <div class="form-group">
-                <button type="submit" class="btn btn-primary">Rechercher</button>
-            </div>
+                        <div class="col-md-3">
+                            <div class="form-group" style="border-radius:10px">
+                                <input type="text" name="code_fournisseur" class="form-control" placeholder="code: FCIxxxxx0">
+                            </div>
+                        </div>
+
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <button type="submit" class="btn" style="background-color: #4f52ba; color:#fff; border-radius:10px">Rechercher</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                
+</div>
+            
         </div>
     </div>
-</form>
+
+</div>
+
 
 @if (isset($searchfournisseur) && !session('error'))
 <div id="page-wrapper">
@@ -175,11 +194,13 @@
 
                             <button type="submit" class="btn btn-primary">Ajouter fournisseur</button>
                             </form>
-</div>
-@endif
-
-@if (!isset($searchfournisseur) && !session('success') && !session('error'))
+                            @if (!isset($searchfournisseur) && !session('success') && !session('error'))
     <p>Le fournisseur n'a pas été trouvé.</p>
 @endif
+</div>
+
+@endif
+
+
 @endsection
 

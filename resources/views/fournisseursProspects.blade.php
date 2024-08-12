@@ -2,48 +2,47 @@
 
 
 @section('content')
-<div id="page-wrapper" style=>
+<div id="page-wrapper">
 
      <span><br></span>
 
-        <form id="searchForm" method="POST" action="{{ route('search_fourn') }}">
-
-		@csrf
-
-
-        	<div class="col-md-3">
-			<div class="form-group">
-				<input type="text" name="entreprise" class="form-control search-filter" id="exampleInputEmail3" placeholder="Entreprise">
-			</div>
-		</div>
-        	<div class="col-md-3">
-			<div class="form-group">
-				<input type="text" name="search" class="form-control search-filter" id="exampleInputEmail3" placeholder="Mot clé">
-			</div>
-		</div>
-		<div class="col-md-3">
-			<div class="form-group">
-				<input type="text" name="domaine" class="form-control search-filter" id="exampleInputEmail3" placeholder="Domaine d'activité">
-			</div>
-		</div>
-
-
-		<div class="col-md-3">
-
-			<div class="form-group">
-            <button type="button" class="form-group btn-primary ">Rechercher</button>
-			</div>
-
-		</div>
-
-		</form>
+   
 					<div class="main-page">
 
 
 			<div class="main-page">
 			<div class="tables">
 				<div class="table-responsive bs-example widget-shadow">
-						<h4>Liste des Prostpects</h4>
+						<h4>Fournisseurs Prostpects</h4>
+            <div style="height: 100px;background-color:#8080806b; color: #000; padding:5px; border-radius:10px">
+            <em>Cette section est réservée pour afficher la liste des fournisseurs prospects<em><br><br>
+
+            <form id="searchForm" method="POST" action="{{ route('search_fourn') }}">
+               @csrf
+
+               <div class="col-md-3">
+                  <div class="form-group" style="border-radius: 15px;">
+                        <input type="text" name="entreprise" class="form-control search-filter" id="exampleInputEmail3" placeholder="Entreprise">
+                  </div>
+               </div>
+               <div class="col-md-3">
+                  <div class="form-group" style="border-radius: 15px;" >
+                        <input type="text" name="search" class="form-control search-filter2" id="exampleInputEmail4" placeholder="Mot clé">
+                  </div>
+               </div>
+               <div class="col-md-3">
+                  <div class="form-group"style="border-radius: 15px;">
+                        <input type="text" name="domaine" class="form-control search-filter3" id="exampleInputEmail5" placeholder="Domaine d'activité">
+                  </div>
+               </div>
+               <div class="col-md-3">
+                  <div class="form-group"style="border-radius: 15px;">
+                        <button type="button" class="form-group btn btn-primary search-btn">Rechercher</button>
+                  </div>
+               </div>
+            </form>
+    
+        </div>
 					<table class="table table-bordered">
 							<thead>
 								<tr>
@@ -101,33 +100,35 @@
 							<span style="color: red;">aucun fournisseur enregistrer</span>
 						@endforelse
 					</table>
-                    <div class="row">
-                        <div class="col-md-3">
-                            <button type="submit" class="btn btn-primary  mailing-btn" style="">Filter Selection</button>
+                  <div class="row">
+                     <div class="col-md-3" style="display: flex;padding-bottom:5px">
+                           <div>
+                           <button type="button" class="btn btn-primary filter-btn">Filter Selection</button>
 
+                           </div>
+                           &nbsp;
+                           <div>
+                           <div>
+                              
+                              <a href="{{ route('export.draft') }}" class="btn btn-success">Export to Excel</a>
 
-					    </div>
-                        <div class="col-md-3">
-                            <button type="submit" class="btn btn-primary  mailing-btn" style="">Export to PDF</button>
+                           </div>
+                           </div>
+                     </div>
 
-						</div>
-						<div class="col-md-3">
-                            <a href="{{ route('export.draft') }}" class="btn btn-success">Export to Excel</a>
+                     
+                     
+                     <div class="col-md-9" style="display:flex;">
+                           <div>
+                           <button type="button" class="btn btn-primary mailing-btn-email">Mailing to</button>
+                           </div>
+                           &nbsp;
+                           <div>
+                           <button type="submit" class="btn btn-primary mailing-btn-email-list" style="float:right;">Mailing list</button>
 
-						</div>
-						<div class="col-md-3">
-								&nbsp;
-						</div>
-							<div class="col-md-3">
-                                <input type="hidden" name="selected_suppliers_ids" id="selectedSuppliersIds">
-
-								<button type="submit" class="btn btn-primary  mailing-btn" style="">Mailing to</button>
-                                <button type="submit" class="btn btn-primary" style="float:right;">Mailing list</button>
-						</div>
-
-
-
-						</div>
+                           </div>
+                     </div>
+                  </div>
 					</div>
                     {!! $fournisseurs->links() !!}
 			</div>

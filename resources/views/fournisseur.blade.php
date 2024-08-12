@@ -5,35 +5,46 @@
 <div id="page-wrapper">
     <span><br></span>
 
+    <div class="main-page">
+        <div class="tables">
+        
+            <div class="table-responsive bs-example widget-shadow" style="border-radius:10px; padding:10px">
+            <h4>
+                Fournisseurs Agées
+            </h4>
+            
+        <div style="height: 100px;background-color:#8080806b; color: #000; padding:5px; border-radius:10px">
+            <em>Cette section est réservée pour afficher la liste des fournisseurs agrées<em><br><br>
+
     <form id="searchForm" method="POST" action="{{ route('search_fourn') }}">
         @csrf
 
         <div class="col-md-3">
-            <div class="form-group">
+            <div class="form-group"style="border-radius: 15px;">
                 <input type="text" name="entreprise" class="form-control search-filter" id="exampleInputEmail3" placeholder="Entreprise">
             </div>
         </div>
         <div class="col-md-3">
-            <div class="form-group">
+            <div class="form-group"style="border-radius: 15px;">
                 <input type="text" name="search" class="form-control search-filter2" id="exampleInputEmail4" placeholder="Mot clé">
             </div>
         </div>
         <div class="col-md-3">
-            <div class="form-group">
+            <div class="form-group"style="border-radius: 15px;">
                 <input type="text" name="domaine" class="form-control search-filter3" id="exampleInputEmail5" placeholder="Domaine d'activité">
             </div>
         </div>
         <div class="col-md-3">
-            <div class="form-group">
+            <div class="form-group"style="border-radius: 15px;">
                 <button type="button" class="form-group btn btn-primary search-btn">Rechercher</button>
             </div>
         </div>
     </form>
+    
+        </div>
+               
+        <br>
 
-    <div class="main-page">
-        <div class="tables">
-            <div class="table-responsive bs-example widget-shadow">
-                <h4>Liste des fournisseurs</h4>
                 <table class="table table-bordered">
                     <thead>
                         <tr>
@@ -72,23 +83,32 @@
                 </table>
 
                 <div class="row">
-                    <div class="col-md-3">
+                    <div class="col-md-3" style="display: flex;padding-bottom:5px">
+                        <div>
                         <button type="button" class="btn btn-primary filter-btn">Filter Selection</button>
-                    </div>
 
-                    <div class="col-md-3">
+                        </div>
+                        &nbsp;
+                        <div>
                         <form id="exportExcelForm" method="POST" action="{{ route('export.excel') }}">
                             @csrf
                             <input type="hidden" name="selected_suppliers_ids" id="selectedSuppliersIdsExcel">
                             <button type="submit" class="btn btn-success export-excel-btn">Export to Excel</button>
                         </form>
+                        </div>
                     </div>
-                    <div class="col-md-3">
-                        &nbsp;
-                    </div>
-                    <div class="col-md-3">
+
+                    
+                   
+                    <div class="col-md-9" style="display:flex;">
+                        <div>
                         <button type="button" class="btn btn-primary mailing-btn-email">Mailing to</button>
+                        </div>
+                        &nbsp;
+                        <div>
                         <button type="submit" class="btn btn-primary mailing-btn-email-list" style="float:right;">Mailing list</button>
+
+                        </div>
                     </div>
                 </div>
             </div>
