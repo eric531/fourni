@@ -4,47 +4,62 @@
 @section('content')
 <div id="page-wrapper">
 
-     <span><br></span>
-
-   
 					<div class="main-page">
 
 
-			<div class="main-page">
+			<div class="main-page" style="margin-top: -50px;">>
 			<div class="tables">
-				<div class="table-responsive bs-example widget-shadow">
-						<h4>Fournisseurs Prostpects</h4>
-            <div style="height: 100px;background-color:#8080806b; color: #000; padding:5px; border-radius:10px">
-            <em>Cette section est réservée pour afficher la liste des fournisseurs prospects<em><br><br>
+         <div class="table-responsive bs-example widget-shadow" style="border-radius:10px; padding:10px">
+            <div class="row p7" style="display: flex;">
+                <div class="col-md-8">
+                <h4 style="color:#4f52ba;">
+                    <b>Liste des fournisseurs Agées</b>
+                </h4>
+                <em style="color:#4f52ba">Ces fournisseurs prospects peuvent être ajouté et validé <br> en tant que  fournisseur agrée<em>
+                </div>
+                <div class="col-md-4 p3" style="display: flex;">
+                <div>
+                    <a href="{{route('draft_list')}}">
+                    <button type="button"style="" class="btn btn-primary">FOURNISSEURS PROSPECT(S)</button>
 
-            <form id="searchForm" method="POST" action="{{ route('search_fourn') }}">
-               @csrf
+                    </a>
+                </div>
+                &nbsp;
+                <div>
+                        <a href="{{route('blacklist')}}">
+                        <button type="button"style="background-color:#fff; color:#4f52ba;" class="btn btn-primary ">FOURNISSEURS BLACKLISTE(S)</button>
 
-               <div class="col-md-3">
-                  <div class="form-group" style="border-radius: 15px;">
-                        <input type="text" name="entreprise" class="form-control search-filter" id="exampleInputEmail3" placeholder="Entreprise">
-                  </div>
-               </div>
-               <div class="col-md-3">
-                  <div class="form-group" style="border-radius: 15px;" >
-                        <input type="text" name="search" class="form-control search-filter2" id="exampleInputEmail4" placeholder="Mot clé">
-                  </div>
-               </div>
-               <div class="col-md-3">
-                  <div class="form-group"style="border-radius: 15px;">
-                        <input type="text" name="domaine" class="form-control search-filter3" id="exampleInputEmail5" placeholder="Domaine d'activité">
-                  </div>
-               </div>
-               <div class="col-md-3">
-                  <div class="form-group"style="border-radius: 15px;">
-                        <button type="button" class="form-group btn btn-primary search-btn">Rechercher</button>
-                  </div>
-               </div>
-            </form>
-    
+                        </a>
+                </div>
+                </div>
+            </div> <br>
+    <form id="searchForm" method="POST" action="{{ route('search_fourn') }}">
+        @csrf
+
+        <div class="col-md-4">
+            <div class="form-group"style="border-radius: 15px;">
+                <input type="text" name="entreprise" class="form-control search-filter" id="exampleInputEmail3" placeholder="Entreprise">
+            </div>
         </div>
-					<table class="table table-bordered">
-							<thead>
+        <div class="col-md-4">
+            <div class="form-group"style="border-radius: 15px;">
+                <input type="text" name="search" class="form-control search-filter2" id="exampleInputEmail4" placeholder="Mot clé">
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group"style="border-radius: 15px;">
+                <input type="text" name="domaine" class="form-control search-filter3" id="exampleInputEmail5" placeholder="Domaine d'activité">
+            </div>
+        </div>
+        
+    </form>
+    
+            
+               
+        <br>
+
+                <table class="table table-bordered">
+                    <thead style="background-color: #4f52ba;color:#fff;">
 								<tr>
 									 <th colspan="2">NOM ENTREPRISE</th>
 									  <th>DOMAINE</th> <th>CONTACTS</th>
@@ -94,41 +109,15 @@
 									</td>
 							</tr>
 
-
+                     @empty
+                        <tr>
+                            <td colspan="7" style="color: red;">Aucun fournisseur enregistré</td>
+                        </tr>
+                        @endforelse
 						</tbody>
-						@empty
-							<span style="color: red;">aucun fournisseur enregistrer</span>
-						@endforelse
+						
 					</table>
-                  <div class="row">
-                     <div class="col-md-3" style="display: flex;padding-bottom:5px">
-                           <div>
-                           <button type="button" class="btn btn-primary filter-btn">Filter Selection</button>
-
-                           </div>
-                           &nbsp;
-                           <div>
-                           <div>
-                              
-                              <a href="{{ route('export.draft') }}" class="btn btn-success">Export to Excel</a>
-
-                           </div>
-                           </div>
-                     </div>
-
-                     
-                     
-                     <div class="col-md-9" style="display:flex;">
-                           <div>
-                           <button type="button" class="btn btn-primary mailing-btn-email">Mailing to</button>
-                           </div>
-                           &nbsp;
-                           <div>
-                           <button type="submit" class="btn btn-primary mailing-btn-email-list" style="float:right;">Mailing list</button>
-
-                           </div>
-                     </div>
-                  </div>
+                  
 					</div>
                     {!! $fournisseurs->links() !!}
 			</div>

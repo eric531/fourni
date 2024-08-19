@@ -2,88 +2,60 @@
 
 @section('content')
 
-<div id="page-wrapper">
-    <span><br></span>
 
-    <div class="main-page">
+<div id="page-wrapper">
+    
+
+    <div class="main-page" style="margin-top: -50px;">
         <div class="tables">
         
             <div class="table-responsive bs-example widget-shadow" style="border-radius:10px; padding:10px">
-            <h4>
-                Fournisseurs Agées
-            </h4>
-            
-        <div style="height: 100px;background-color:#8080806b; color: #000; padding:5px; border-radius:10px">
-            <em>Cette section est réservée pour afficher la liste des fournisseurs agrées<em><br><br>
+            <div class="row p7" style="display: flex;">
+                <div class="col-md-8">
+                <h4 style="color:#4f52ba;">
+                    <b>Liste des fournisseurs Agées</b>
+                </h4>
+                <em style="color:#4f52ba">Ces fournisseurs agrées peuvent être blacklisté <br> en tant que  fournisseur blaclisté<em>
+                </div>
+                <div class="col-md-4 p3" style="display: flex;">
+                <div>
+                    <a href="{{route('draft_list')}}">
+                    <button type="button"style="" class="btn btn-primary">FOURNISSEURS PROSPECT(S)</button>
 
+                    </a>
+                </div>
+                &nbsp;
+                <div>
+                        <a href="{{route('blacklist')}}">
+                        <button type="button"style="background-color:#fff; color:#4f52ba;" class="btn btn-primary ">FOURNISSEURS BLACKLISTE(S)</button>
+
+                        </a>
+                </div>
+                </div>
+            </div>
     <form id="searchForm" method="POST" action="{{ route('search_fourn') }}">
         @csrf
 
-        <div class="col-md-3">
+        <div class="col-md-4">
             <div class="form-group"style="border-radius: 15px;">
                 <input type="text" name="entreprise" class="form-control search-filter" id="exampleInputEmail3" placeholder="Entreprise">
             </div>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-4">
             <div class="form-group"style="border-radius: 15px;">
                 <input type="text" name="search" class="form-control search-filter2" id="exampleInputEmail4" placeholder="Mot clé">
             </div>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-4">
             <div class="form-group"style="border-radius: 15px;">
                 <input type="text" name="domaine" class="form-control search-filter3" id="exampleInputEmail5" placeholder="Domaine d'activité">
             </div>
         </div>
-        <div class="col-md-3">
-            <div class="form-group"style="border-radius: 15px;">
-                <button type="button" class="form-group btn btn-primary search-btn">Rechercher</button>
-            </div>
-        </div>
+        
     </form>
     
-        </div>
-               
-        <br>
-
-                <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th>Selection</th>
-                            <th>NOM ENTREPRISE</th>
-                            <th>DOMAINE</th>
-                            <th>CONTACTS</th>
-                            <th>E-MAIL</th>
-                            <th>Voir Fiche</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @forelse ($fournisseurs as $fourni)
-                        <tr>
-                            <td><input type="checkbox" name="selected_suppliers[]" value="{{ $fourni->id }}" data-email="{{ $fourni->email }}"></td>
-                            <td>{{ $fourni->entreprise }}</td>
-                            <td>{{ $fourni->domaine_activites_1 }}</td>
-                            <td>{{ $fourni->mobile }}</td>
-                            <td>{{ $fourni->email }}</td>
-                            <td><span class="badge badge-danger">Voir fiche</span></td>
-                            <td>
-                                <form action="{{ route('blacklist_set') }}" method="post">
-                                    @csrf
-                                    <input type="hidden" name="id" value="{{ $fourni->id }}">
-                                    <button type="submit" class="btn btn-primary">Liste noire</button>
-                                </form>
-                            </td>
-                        </tr>
-                        @empty
-                        <tr>
-                            <td colspan="7" style="color: red;">Aucun fournisseur enregistré</td>
-                        </tr>
-                        @endforelse
-                    </tbody>
-                </table>
-
                 <div class="row">
-                    <div class="col-md-3" style="display: flex;padding-bottom:5px">
+                    <div class="col-md-3" style="display:flex;padding-bottom:5px">
                         <div>
                         <button type="button" class="btn btn-primary filter-btn">Filter Selection</button>
 
@@ -109,8 +81,55 @@
                         <button type="submit" class="btn btn-primary mailing-btn-email-list" style="float:right;">Mailing list</button>
 
                         </div>
+                        
                     </div>
                 </div>
+               
+        <br>
+
+                <table class="table table-bordered">
+                    <thead style="background-color: #4f52ba;color:#fff;">
+                        <tr>
+                            <th>SELCTION</th>
+                            <th>NOM ENTREPRISE</th>
+                            <th>DOMAINE</th>
+                            <th>CONTACTS</th>
+                            <th>E-MAIL</th>
+                            <th>VOIR FICHE</th>
+                            <th>ACTION</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @forelse ($fournisseurs as $fourni)
+                        <tr>
+                            <td><input type="checkbox" name="selected_suppliers[]" value="{{ $fourni->id }}" data-email="{{ $fourni->email }}"></td>
+                            <td>{{ $fourni->entreprise }}</td>
+                            <td>{{ $fourni->domaine_activites_1 }}</td>
+                            <td>{{ $fourni->mobile }}</td>
+                            <td>{{ $fourni->email }}</td>
+                            <td><span class="badge badge-danger">Voir fiche</span></td>
+                            <td>
+                                <form action="{{ route('blacklist_set') }}" method="post">
+                                    @csrf
+                                    <input type="hidden" name="id" value="{{ $fourni->id }}">
+                                    <button type="submit" class="btn btn-primary">Liste noire</button>
+                                    <div class="form-check form-switch">
+
+                                    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                                    <label class="form-check-label" for="flexSwitchCheckDefault">Default switch checkbox input</label>
+                                    </div>
+                                </form>
+                            </td>
+                        </tr>
+                        @empty
+                        <tr>
+                            <td colspan="7" style="color: red;">Aucun fournisseur enregistré</td>
+                        </tr>
+                        @endforelse
+                    </tbody>
+                </table>
+
+                
             </div>
             {!! $fournisseurs->links() !!}
         </div>

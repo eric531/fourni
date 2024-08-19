@@ -50,6 +50,13 @@
 		<div class=" sidebar" role="navigation">
             <div class="navbar-collapse">
             <nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1">
+			<div class="logo" style="position:absolute;left:70px" >
+					<a href="#">
+						<h1>
+							<img  style="height: 30px;width:30px" src="{{ asset('storage/' . $logo) }}" alt="logo">
+						</h1>
+					</a>
+				</div> <br> <br><hr><br>
     <ul class="nav" id="side-menu">
 
         <li >
@@ -75,7 +82,8 @@
 
 
     </ul>
-    <div class="logo " style="background:#fff; position:absolute; height:200px; bottom: 100px;">
+	
+    <div class="logo " style="background:#fff; position:absolute; top:290px; height:200px; bottom: 100px;">
     <a href="#" style="position:absolute; bottom:0; width:100%;">
         <h1 style="margin:0;"><img style="background:#fff; height:60px; width:auto;" src="{{asset('styles/uploads/logo.png')}}" alt="Logo"></h1>
     </a>
@@ -86,29 +94,24 @@
 		</div>
 		<!--left-fixed -navigation-->
 		<!-- header-starts -->
-		<div class="sticky-header header-section ">
-			<div class="header-left">
+		<div class="sticky-header header-section" style="background-color: #f1f1f1;">
+		<h1 style="font-size: 35px; position:absolute; left:310px; top: 18px;font-family:sans-serif; color:#80808082"><b>Gestion des Agréments Fournisseurs</b></h1>
+			<div class="header-left" style="background-color: #4f52ba;">
 				<!--toggle button start-->
-				<button id="showLeftPush"><i class="fa fa-bars"></i></button>
-				<!--toggle button end-->
-				<!--logo -->
-				<div class="logo" style="background:#fff; " >
-					<a href="#">
-                    <h1><img style="background:#fff;height:50px; border-radius:70px;" src="{{ asset('storage/' . $logo) }}"></h1>
-
-					</a>
-				</div>
-				<!--//logo-->
-				<!--search-box-->
-
-
-				<div class="search-box" style="font-weight:bold; padding-top:15px; font-size:13px;">
-
-				</div><!--//end-search-box-->
-				<div class="clearfix"> </div>
+				<button id="showLeftPush" style="background-color: #4f52ba;color:#fff"><i class="fa fa-bars"></i></button>
+				
+				
+				
 			</div>
+			
 
 			<div class="header-right">
+			
+				<div class="search-box" style="font-weight:bold;border-radius:15px">
+				
+					<i class="fa fa-search" style="position: absolute; top:10px; left:3px; ; color:#4f52ba12;"></i><input type="text" class="form-control search-filter" id="exampleInputEmail3" placeholder="search">
+
+				</div>
 
 				<!--notification menu end -->
 				<div class="profile_details">
@@ -116,7 +119,7 @@
 						<li class="dropdown profile_details_drop">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
 								<div class="profile_img">
-									<span class="prfil-img"><img src="{{asset('styles/uploads/nhavila.png')}}" style="height:60px; width:60px;border-radius:100%;" alt=""> </span>
+									<span class="prfil-img"><img src="{{asset('styles/images/user.png')}}" style="height:60px; width:60px;border-radius:100%;" alt=""> </span>
 									<div class="user-name">
 										<p>N'havila</p>
                                         <span>{{$user}}</span>
@@ -151,9 +154,9 @@
 
     @yield('content')
 		<!--footer-->
-		<div class="footer">
+		<!-- <div class="footer">
 		   <p>&copy; © 2022 BSC Logiciel Fournisseurs agréés -Tous droits réservés</p>
-		</div>
+		</div> -->
         <!--//footer-->
 	</div>
 	<!-- Classie -->

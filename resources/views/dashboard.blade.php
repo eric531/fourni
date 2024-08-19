@@ -5,7 +5,9 @@
 <!-- main content start -->
 <div id="page-wrapper">
     <div class="main-page">
+        
         <div class="row-one">
+            
             <div class="col-md-4 widget">
                 <div class="stats-left">
                     <h6 style="color:#fff">TOTAL</h6>

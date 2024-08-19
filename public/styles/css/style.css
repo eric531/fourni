@@ -13,7 +13,7 @@ html, body{
   	font-family: 'Roboto Condensed', sans-serif;
     font-size: 100%;
   	overflow-x: hidden;
-	background: #fff;
+	background: #efefef;
 }
 body a{
 	transition: 0.5s all ease;
@@ -62,10 +62,13 @@ body a:hover{
 }
 .header-left {
     float: left;
-    width: 45%;
+    width: 22.6%;
+    height: auto;
 }
 .header-right {
     float: right;
+    
+    height: auto;
 }
 /* ----menu-icon----*/
 button#showLeftPush {

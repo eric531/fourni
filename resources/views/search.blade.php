@@ -19,17 +19,36 @@
         
 
 
-            <div class="table-responsive bs-example widget-shadow" style="background-color:#fff; border-radius:10px">
-            <h4>Réchercher un fournisseur</h4>
-            <div style="height: 50px;background-color:#8080806b; color: #000; padding:5px; border-radius:10px">
-                    <em>Cette section est réservée pour réchercher un fournisseur<em>
+        <div class="table-responsive bs-example widget-shadow" style="border-radius:10px; padding:10px">
+            <div class="row p7" style="display: flex;">
+                <div class="col-md-8">
+                <h4 style="color:#4f52ba;">
+                    <b>Réchercher un fournisseur</b>
+                </h4>
+                <em style="color:#4f52ba">Le fournisseur récherché peut être ajouté <br> en tant que  fournisseur prospect<em>
+                </div>
+                <div class="col-md-4 p3" style="display: flex;">
+                <div>
+                    <a href="{{route('draft_list')}}">
+                    <button type="button"style="" class="btn btn-primary">FOURNISSEURS PROSPECT(S)</button>
+
+                    </a>
+                </div>
+                &nbsp;
+                <div>
+                        <a href="{{route('fournisseur')}}">
+                        <button type="button"style="background-color:#fff; color:#4f52ba;" class="btn btn-primary ">FOURNISSEURS AGREE(S)</button>
+
+                        </a>
+                </div>
+                </div>
             </div>
                 <form method="GET" action="{{ route('recherche') }}">
                     @csrf
                     <div class="row">
-                        <div class="col-md-6" style="background-color: #5cb85c;border-radius:10px">
-                            <center style="font-size: 18px; text-align: center; padding-top: 3px;">
-                                Rechercher un fournisseur agrée
+                        <div class="col-md-6" style="background-color: #ee763c;border-radius:10px">
+                            <center style="font-size: 18px;color:#fff; text-align: center; padding-top: 3px;">
+                                Entrer le code fournisseur
                             </center>
                         </div>
 
@@ -192,7 +211,7 @@
                                 <input type="hidden" name="fournisseur" value="">
                             @endif
 
-                            <button type="submit" class="btn btn-primary">Ajouter fournisseur</button>
+                            <button type="submit" class="btn btn-primary">Ajouter à la liste des fournisseurs prospects</button>
                             </form>
                             @if (!isset($searchfournisseur) && !session('success') && !session('error'))
     <p>Le fournisseur n'a pas été trouvé.</p>
