@@ -432,6 +432,9 @@ ul.dropdown-menu li {
 li.active a i, .act a i {
     color: #F2B33F;
 }
+.active{
+    color:#ee763c !important;
+}
 .custom-nav > li.act > a, .custom-nav > li.act > a:hover, .custom-nav > li.act > a:focus {
     background-color: #353f4f;
     color:#8BC34A;

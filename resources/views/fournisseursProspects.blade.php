@@ -13,7 +13,7 @@
             <div class="row p7" style="display: flex;">
                 <div class="col-md-8">
                 <h4 style="color:#4f52ba;">
-                    <b>Liste des fournisseurs Agées</b>
+                    <b>Liste des fournisseurs prospects</b>
                 </h4>
                 <em style="color:#4f52ba">Ces fournisseurs prospects peuvent être ajouté et validé <br> en tant que  fournisseur agrée<em>
                 </div>
