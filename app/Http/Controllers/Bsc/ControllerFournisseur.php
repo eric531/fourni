@@ -27,11 +27,11 @@ class ControllerFournisseur extends Controller
         $user_id = $_COOKIE['user_id'] ?? null;
 
         $logoE = Entreprise::where("user_id",$user_id)->first();
-        // $logo =$logoE->logo;
+        $logo =$logoE->logo;
 
         $fournisseurs = Fournisseur::where('user_id',$user_id)->where('blaklist',false)->paginate(5);
        // dd($fournisseurs);
-        return view('fournisseur', compact('fournisseurs','user',));
+        return view('fournisseur', compact('fournisseurs','user','logo'));
     }
 
 
@@ -43,9 +43,9 @@ class ControllerFournisseur extends Controller
         $user = $_COOKIE['user']??null;
         $user_id = $_COOKIE['user_id'] ?? null;
         $logoE = Entreprise::where("user_id",$user_id)->first();
-       // $logo =$logoE->logo;
+        $logo =$logoE->logo;
 
-        return view('search', compact('user',));
+        return view('search', compact('user','logo'));
     }
     public function search(Request $request)
     {
@@ -100,11 +100,11 @@ class ControllerFournisseur extends Controller
         $user = $_COOKIE['user']??null;
         $user_id = $_COOKIE['user_id'] ?? null;
              $logoE = Entreprise::where("user_id",$user_id)->first();
-        //$logo =$logoE->logo;
+        $logo =$logoE->logo;
 
         $fournisseurs = Fournisseur::where('user_id',$user_id)->where('blaklist',true)->paginate(5);
        // dd($fournisseurs->links());
-        return view('fournisseursBlackliste', compact('fournisseurs','user',));
+        return view('fournisseursBlackliste', compact('fournisseurs','user','logo'));
     }
 
     //ajouter les fournisseurs sélectionnés à la liste de l'utilisateur :
@@ -186,7 +186,7 @@ class ControllerFournisseur extends Controller
         $user_id = $_COOKIE['user_id']??null;
         $client = new Client();
         $logoE = Entreprise::where("user_id",$user_id)->first();
-        //$logo =$logoE->logo;
+        $logo =$logoE->logo;
 
 
 
@@ -210,11 +210,13 @@ class ControllerFournisseur extends Controller
         }
       #dd($interlocuteur->interloc_nom);
         if (isset($searchfournisseur) || $searchfournisseur !=null){
-            return view('search', compact('searchfournisseur','user','interlocuteurs','produits_services',));
+            return view('search', compact('searchfournisseur','user','interlocuteurs','produits_services','logo'));
         } else {
             return back()->with('error', 'Fournisseur non trouvé.');
         }
     }
+
+
 
 
 }

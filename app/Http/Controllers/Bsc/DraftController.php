@@ -24,8 +24,8 @@ class DraftController extends Controller
         $user_id = $_COOKIE['user_id'] ?? null;
 
         $logoE = Entreprise::where("user_id",$user_id)->first();
-       // $logo =$logoE->logo;
-        return view("fournisseursProspects", compact("fournisseurs","user",));
+        $logo =$logoE->logo;
+        return view("fournisseursProspects", compact("fournisseurs","user","logo"));
     }
 
 

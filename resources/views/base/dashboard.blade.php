@@ -53,7 +53,7 @@
 			<div class="logo" style="position:absolute;left:70px" >
 					<a href="#">
 						<h1>
-							<img  style="height: 30px;width:30px" src="{{asset('styles/uploads/nhavila.png')}}" alt="logo">
+							<img  style="height: 30px;width:30px" src="{{ asset('storage/' . $logo) }}" alt="logo">
 						</h1>
 					</a>
 				</div> <br> <br><hr><br>
@@ -67,17 +67,17 @@
         </li>
 
         <li>
-            <a href="{{ route('fournisseur') }}"  class="{{ Request::is('fournisseurAgree') ? 'active' : '' }}"><i class="fa fa-table nav_icon"></i>Liste des fournisseurs agrées</a>
+            <a href="{{ route('fournisseur') }}"  class="{{ Request::is('fournisseur') ? 'active' : '' }}"><i class="fa fa-table nav_icon"></i>Liste des fournisseurs agrées</a>
         </li>
 
         <li >
-            <a href="{{ route('draft_list') }}" class="{{ Request::is('fournisseurProspect') ? 'active' : '' }}"><i class="fa  fa-user nav_icon"></i>Liste des fournisseurs prospects</a>
+            <a href="{{ route('draft_list') }}" class="{{ Request::is('draft') ? 'active' : '' }}"><i class="fa  fa-user nav_icon"></i>Liste des fournisseurs prospects</a>
         </li>
         <!-- <li >
             <a href="#" ><i class="fa fa-edit nav_icon"></i>Evaluation fournisseur</a>
         </li> -->
         <li >
-            <a href="{{ route('blacklist') }}" class="{{ Request::is('fournisseurBlackliste') ? 'active' : '' }}"><i class="fa fa-ban nav_icon"></i>Liste des fournisseurs blacklistés</a>
+            <a href="{{ route('blacklist') }}" class="{{ Request::is('blacklist') ? 'active' : '' }}"><i class="fa fa-ban nav_icon"></i>Liste des fournisseurs blacklistés</a>
         </li>
 
 

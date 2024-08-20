@@ -83,7 +83,7 @@
 						</div>
 
 						<div class="center dark"><small>Copyrights &copy; 2022- {{date('Y')}} <span style="color:red">BSC Logiciel Fournisseurs agréés </span> -Tous droits réservés</small></div>
-						<div class="center dark"><small><span>Développer par</span><a style="color:blue" href="https://eso-dev.com/"> ESO-DEV</a></small></div>
+
 					</div>
 				</div>
 

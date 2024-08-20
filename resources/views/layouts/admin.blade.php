@@ -123,7 +123,7 @@
 						<span class="user-icon">
 							<img src="{{asset('vendors/images/photo1.jpg')}}" alt="">
 						</span>
-						<span class="user-name">{{auth()->user()}}</span>
+						<span class="user-name">{{auth()->user()->name}}</span>
 					</a>
 					<div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
 
