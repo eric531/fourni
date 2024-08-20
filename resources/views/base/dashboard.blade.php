@@ -72,13 +72,26 @@
         <li >
             <a href="{{ route('blacklist') }}" class="{{ Request::is('blacklist') ? 'active' : '' }}"><i class="fa fa-ban nav_icon"></i>Liste des fournisseurs blacklistés</a>
         </li>
+		<li class="menu">
+            <a class=""><i class="fa fa-edit nav_icon"></i>Commande & Evalu</a>
+			
+        </li>
 
 
     </ul>
-    <div class="logo " style="background:#fff; position:absolute; height:200px; bottom: 100px;">
-    <a href="#" style="position:absolute; bottom:0; width:100%;">
-        <h1 style="margin:0;"><img style="background:#fff; height:60px; width:auto;" src="{{asset('styles/uploads/logo.png')}}" alt="Logo"></h1>
+    <div class="logo" style="background:#fff; position:absolute; height:70px;width:100%; bottom: 70px;border-radius:10px">
+<div>
+<p style="font-size: 10px; font-family:sans-serif">contact: <b>+225 0703370000</b>; Gmail: <b>achats@bsc-ci.net</b></p>
+<p style="font-size: 10px;color:#e94e02"><b>BSC votre partenaire achats pour simplifier vos processus</b></p>
+</div>
+	<a href="#" style="position:absolute; bottom:0; width:100%;">
+        
+			
+		<img style="background:#fff; height:30px; width:50px;" src="{{asset('styles/uploads/logo.png')}}" alt="Logo">
+		
+		
     </a>
+
 </div>
 </nav>
 
@@ -86,15 +99,16 @@
 		</div>
 		<!--left-fixed -navigation-->
 		<!-- header-starts -->
-		<div class="sticky-header header-section ">
-			<div class="header-left">
+		<div class="sticky-header header-section" style="">
+			<h1 style="position: absolute;left:330px;top:20px;font-weight:bold">GESTION DES AGREMENTS FOURNISSEURS</h1>
+			<div class="header-left" style="">
 				<!--toggle button start-->
 				<button id="showLeftPush"><i class="fa fa-bars"></i></button>
 				<!--toggle button end-->
 				<!--logo -->
-				<div class="logo" style="background:#fff; " >
+				<div class="logo" style="background:#fff;position:relative; left:60px; top:3px; height:73px" >
 					<a href="#">
-                    <h1><img style="background:#fff;height:50px; border-radius:70px;" src="{{ asset('storage/' . $logo) }}"></h1>
+                    <h1><img style="background-color:#fff;height:50px;width: 50px;; border-radius:70px;" src="{{asset('styles/uploads/nhavila.png')}}"></h1>
 
 					</a>
 				</div>
@@ -102,9 +116,7 @@
 				<!--search-box-->
 
 
-				<div class="search-box" style="font-weight:bold; padding-top:15px; font-size:13px;">
-
-				</div><!--//end-search-box-->
+				
 				<div class="clearfix"> </div>
 			</div>
 
@@ -116,9 +128,9 @@
 						<li class="dropdown profile_details_drop">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
 								<div class="profile_img">
-									<span class="prfil-img"><img src="{{asset('styles/uploads/nhavila.png')}}" style="height:60px; width:60px;border-radius:100%;" alt=""> </span>
+									<span class="prfil-img"><img src="{{asset('styles/images/user.png')}}" style="height:60px; width:60px;border-radius:100%;" alt=""> </span>
 									<div class="user-name">
-										<p>N'havila</p>
+										<p>Utilisateur</p>
                                         <span>{{$user}}</span>
 									</div>
 									<i class="fa fa-angle-down lnr"></i>
@@ -152,7 +164,7 @@
     @yield('content')
 		<!--footer-->
 		<div class="footer">
-		   <p>&copy; © 2022 BSC Logiciel Fournisseurs agréés -Tous droits réservés</p>
+		   <p>&copy; BSC - Business Supply Center / {{date('Y')}} - V1.0 / Tous droits réservés</p>
 		</div>
         <!--//footer-->
 	</div>

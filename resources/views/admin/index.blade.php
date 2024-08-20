@@ -5,7 +5,7 @@
 <div class="main-container">
 			<div class="xs-pd-20-10 pd-ltr-20">
 				<div class="title pb-20">
-					<h2 class="h3 mb-0">Hospital Overview</h2>
+					<!-- <h2 class="h3 mb-0">Hospital Overview</h2> -->
 				</div>
 
 				<div class="row pb-10">
@@ -19,8 +19,8 @@
 									</div>
 								</div>
 								<div class="widget-icon">
-									<div class="icon" data-color="#00eccf">
-										<i class="icon-copy dw dw-calendar1"></i>
+									<div class="icon" data-color="#09cc06">
+										<i class="icon-copy ti-rss-alt"></i>
 									</div>
 								</div>
 							</div>
@@ -37,7 +37,7 @@
 								</div>
 								<div class="widget-icon">
 									<div class="icon" data-color="#ff5b5b">
-										<span class="icon-copy ti-heart"></span>
+										<span class="icon-copy ti-home"></span>
 									</div>
 								</div>
 							</div>
@@ -53,9 +53,9 @@
 									</div>
 								</div>
 								<div class="widget-icon">
-									<div class="icon">
+									<div class="icon" data-color="#09cc06">
 										<i
-											class="icon-copy fa fa-stethoscope"
+											class="icon-copy ti-credit-card"
 											aria-hidden="true"
 										></i>
 									</div>
@@ -71,8 +71,8 @@
 									<div class="font-14 text-secondary weight-500">Abonnements inactif</div>
 								</div>
 								<div class="widget-icon">
-									<div class="icon" data-color="#09cc06">
-										<i class="icon-copy fa fa-money" aria-hidden="true"></i>
+									<div class="icon" data-color="red">
+										<i class="icon-copy ti-credit-card" aria-hidden="true"></i>
 									</div>
 								</div>
 							</div>

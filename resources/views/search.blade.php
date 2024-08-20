@@ -10,25 +10,19 @@
     <div style="color: green;">{{ session('success') }}</div>
 @endif
 
-
-
 <div id="page-wrapper">
 
-<div class="main-page">
+    <div class="main-page">
         <div class="tables">
         
-
-
-            <div class="table-responsive bs-example widget-shadow" style="background-color:#fff; border-radius:10px">
-            <h4>Réchercher un fournisseur</h4>
-            <div style="height: 50px;background-color:#8080806b; color: #000; padding:5px; border-radius:10px">
-                    <em>Cette section est réservée pour réchercher un fournisseur<em>
-            </div>
-                <form method="GET" action="{{ route('recherche') }}">
+        <div class="table-responsive bs-example widget-shadow" style="background-color:#fff; border-radius:10px">
+            <h4>Réchercher un fournisseur</h4><br>
+            <div style="height: auto;background-color:#8080806b; color: #000; padding:5px; border-radius:10px">
+            <form method="GET" action="{{ route('recherche') }}">
                     @csrf
                     <div class="row">
-                        <div class="col-md-6" style="background-color: #5cb85c;border-radius:10px">
-                            <center style="font-size: 18px; text-align: center; padding-top: 3px;">
+                        <div class="col-md-6" style="background-color: #e94e02;border-radius:10px">
+                            <center style="font-size: 18px; text-align: center; padding-top: 3px; color:#fff">
                                 Rechercher un fournisseur agrée
                             </center>
                         </div>
@@ -46,13 +40,23 @@
                         </div>
                     </div>
                 </form>
+            </div>
+                
                 
 </div>
+
+                
+
+                
+            </div>
             
         </div>
     </div>
-
 </div>
+
+
+
+
 
 
 @if (isset($searchfournisseur) && !session('error'))

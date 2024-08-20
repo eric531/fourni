@@ -62,7 +62,7 @@ body a:hover{
 }
 .header-left {
     float: left;
-    width: 45%;
+    width: 22.6%;
 }
 .header-right {
     float: right;
@@ -74,7 +74,7 @@ button#showLeftPush {
     padding: 0.87em 0;
     text-align: center;
     cursor: pointer;
-    float: left;
+    float: right;
     color: #6F6F6F;
     -moz-transition: all 0.2s ease-out 0s;
     -webkit-transition: all 0.2s ease-out 0s;
@@ -197,6 +197,15 @@ span.nav-badge-btm {
 	right: 5%;
     top: 24%;
 }
+.menu div{
+    display: none;
+    background-color:red
+}
+
+.menu div:hover{
+ 
+    background-color:red
+} 
 ul.dropdown-menu{
 	animation: flipInX 1s ease;
 	-moz-animation: flipInX 1s ease;

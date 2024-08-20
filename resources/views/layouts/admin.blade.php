@@ -3,7 +3,7 @@
 <head>
 	<!-- Basic Page Info -->
 	<meta charset="utf-8">
-	<title>BCS</title>
+	<title>BSC</title>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <!-- Inclure le script CKEditor -->
@@ -123,7 +123,7 @@
 						<span class="user-icon">
 							<img src="{{asset('vendors/images/photo1.jpg')}}" alt="">
 						</span>
-						<span class="user-name">{{auth()->user()->name}}</span>
+						<span class="user-name">{{auth()->user()}}</span>
 					</a>
 					<div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
 
@@ -230,7 +230,7 @@
 				<ul id="accordion-menu">
 					<li class="dropdown">
 						<a href="javascript:;" class="dropdown-toggle">
-							<span class="micon dw dw-house-1"></span><span class="mtext">Home</span>
+							<span class="micon dw dw-home"></span><span class="mtext">Home</span>
 						</a>
 						<ul class="submenu">
 							<li><a href="dashboard">Dashboard</a></li>
@@ -239,7 +239,7 @@
 
                     <li class="dropdown">
 						<a href="javascript:;" class="dropdown-toggle">
-							<span class="micon dw dw-library"></span><span class="mtext">Entreprises</span>
+							<span class="micon dw dw-lighthouse"></span><span class="mtext">Entreprises</span>
 						</a>
 						<ul class="submenu">
 							<li><a href="{{route('entreprises.index')}}">Liste des entreprises</a></li>
@@ -247,7 +247,7 @@
 					</li>
                     <li class="dropdown">
 						<a href="javascript:;" class="dropdown-toggle">
-							<span class="micon dw dw-library"></span><span class="mtext">Abonnements</span>
+							<span class="micon dw dw-wallet-1"></span><span class="mtext">Abonnements</span>
 						</a>
 						<ul class="submenu">
 							<li><a href="{{route('abonnements.index')}}">Liste des Abonnements</a></li>
