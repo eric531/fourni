@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-
+<div class="main-container">
 <div class="pd-20 card-box mb-30">
 
 <form method="POST" action="{{ route('entreprises.store') }}" enctype="multipart/form-data">
@@ -42,13 +42,14 @@
             </div>
           </div>
 
-          <button type="submit" class="btn btn-primary me-2">Envoyer</button>
+          <button type="submit" class="btn btn-primary me-2">Enregister</button>
                     <button class="btn btn-light"><a href="{{route('products.index')}}">Annuler</a></button>
 
         </form>
 
 
-
+</div>
+</div>
 @endsection
 
 

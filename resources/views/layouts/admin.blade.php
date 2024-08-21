@@ -123,7 +123,7 @@
 						<span class="user-icon">
 							<img src="{{asset('vendors/images/photo1.jpg')}}" alt="">
 						</span>
-						<span class="user-name">{{auth()->user()}}</span>
+						<span class="user-name">{{auth()->user()->name}}</span>
 					</a>
 					<div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
 
@@ -263,10 +263,7 @@
 
 		@yield('content')
         <div class="footer-wrap pd-20 mb-20 card-box">
-					DeskApp - sneezy
-					<a href="/" target="_blank"
-						>sneezy</a
-					>
+		© BSC - Business Supply Center / {{date('Y')}} - V1.0 / Tous droits réservés
 		</div>
 	<!-- js -->
 	<script src="{{asset('vendors/scripts/core.js')}}"></script>

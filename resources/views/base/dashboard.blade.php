@@ -108,7 +108,7 @@
 				<!--logo -->
 				<div class="logo" style="background:#fff;position:relative; left:60px; top:3px; height:73px" >
 					<a href="#">
-                    <h1><img style="background-color:#fff;height:50px;width: 50px;; border-radius:70px;" src="{{asset('styles/uploads/nhavila.png')}}"></h1>
+                    <h1><img style="background-color:#fff;height:50px;width: 50px;; border-radius:70px;" src="{{ asset('storage/' . $logo) }}"></h1>
 
 					</a>
 				</div>

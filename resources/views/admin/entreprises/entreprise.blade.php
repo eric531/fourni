@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-
+<div class="main-container">
 <div class="pd-20 card-box mb-30">
 @if ($errors->any())
 			<div class="alert alert-danger">
@@ -42,7 +42,7 @@
                     
 				</div>
                 
-
+</div>
 @endsection
 
 

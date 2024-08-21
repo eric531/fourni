@@ -4,6 +4,7 @@
 @extends('layouts.admin')
 
 @section('content')
+<div class="main-container">
 <div class="pd-20 card-box mb-30">
 					<div class="clearfix mb-20">
 						<div class="pull-left">
@@ -65,4 +66,5 @@
     <div class="d-flex justify-content-center">
         {!! $entreprises->links() !!}
     </div>
+</div>
 @endsection

@@ -4,23 +4,26 @@
 @extends('layouts.admin')
 
 @section('content')
+<div class="main-container">
 <div class="pd-20 card-box mb-30">
-					<div class="clearfix mb-20">
-						<div class="pull-left">
-							<h4 class="text-blue h4">Abonnements</h4>
+					<div class="row clearfix mb-20">
+						<div class="col-md-8 pull-left">
+							<h4 class="text-blue h4">Liste des abonnements</h4>
 
 						</div>
+
+                        <div class="col-md-4 d-flex justify-content-end align-items-end ">
+                        <button type="button" class="btn btn-primary mb-4" data-toggle="modal" data-target="#exampleModal">
+                            Créér un abonnement
+                        </button>
+                    </div>
 
 					</div>
                     <div class="col d-flex justify-content-end align-items-end ">
                        <span class="col text-success success"></span>
                        <span class="col text-danger error"></span>
                     </div>
-                    <div class="col d-flex justify-content-end align-items-end ">
-                        <button type="button" class="btn btn-primary mb-4" data-toggle="modal" data-target="#exampleModal">
-                            Ajouter
-                        </button>
-                    </div>
+                   
                     @include('admin.abonnements.form')
 					<table class="table">
 						<thead>
@@ -63,4 +66,5 @@
     <div class="d-flex justify-content-center">
         {!! $abonnements->links() !!}
     </div>
+</div>
 @endsection

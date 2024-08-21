@@ -1,36 +1,62 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html dir="ltr" lang="en-US">
 <head>
-	<title>BSC</title>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-<!--===============================================================================================-->
-	<link rel="icon" type="image/png" href="{{url('styles/uploads/logo.png')}}"/>
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{{asset('vendor/bootstrap/css/bootstrap.min.css')}}">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{{asset('fonts/font-awesome-4.7.0/css/font-awesome.min.css')}}">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{{asset('vendor/animate/animate.css')}}">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{{asset('vendor/css-hamburgers/hamburgers.min.css')}}">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{{asset('vendor/select2/select2.min.css')}}">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{{asset('css/util.css')}}">
-	<link rel="stylesheet" type="text/css" href="{{asset('css/main.css')}}">
-<!--===============================================================================================-->
+
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="author" content="SemiColonWeb" />
+
+	<!-- Stylesheets
+	============================================= -->
+	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,400i,700|Raleway:300,400,500,600,700|Crete+Round:400i" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" href="{{asset('/styles/css/login/bootstrap.css')}}" type="text/css" />
+	<link rel="stylesheet" href="{{asset('/styles/css/login/style.css')}}" type="text/css" />
+	<!-- <link rel="stylesheet" href="{{asset('/styles/css/login/dark.css')}}" type="text/css" /> -->
+	<link rel="stylesheet" href="{{asset('/styles/css/login/font-icons.css')}}" type="text/css" />
+	<link rel="stylesheet" href="{{asset('/styles/css/login/animate.css')}}" type="text/css" />
+	<link rel="stylesheet" href="{{asset('/styles/css/login/magnific-popup.css')}}" type="text/css" />
+
+	<link rel="stylesheet" href="{{asset('/styles/css/login/responsive.css')}}" type="text/css" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+	<!-- Document Title
+	============================================= -->
+	<title>Admin | Gestion des Agréments Fournisseurs</title>
+
 </head>
-<body>
 
-	<div class="limiter">
-		<div class="container-login100">
+<body class="stretched">
 
-			<div class="wrap-login100">
+	<!-- Document Wrapper
+	============================================= -->
+	<div id="wrapper" class="clearfix">
 
-				<div class="login100-pic js-tilt" data-tilt>
-				@if ($errors->any())
-			<div class="alert alert-danger">
+		<!-- Content
+		============================================= -->
+		<section id="content">
+
+			<div class="content-wrap nopadding">
+
+				<div class="section nopadding nomargin" style="width: 100%; height: 100%; position: absolute; left: 0; top: 0; background: #ffff;"></div>
+
+				<div class="section nobg full-screen nopadding nomargin">
+					<div class="container-fluid vertical-middle divcenter clearfix">
+
+						
+
+						<div class="card divcenter noradius noborder" style="max-width: 400px;">
+							<div class="card-body" style="padding: 40px;border:1px solid; border-radius:9px;box-shadow:0px 0px 5px 5px gray; border-color:#003399">
+								<form id="login-form" name="login-form" class="nobottommargin" method="POST" action="{{ route('admin.login') }}">
+                                @csrf
+								<div class="center">
+							<a href="index.html"><img src="{{asset('styles/uploads/logo.png')}}" alt="Logo-Bsc-agrement" style="height: 50px;"></a>
+						</div>
+			
+                                    <span style='text-align:center; display:flex; justify-content:center'>Connectez vous en tant que &nbsp;<b>administrateur</b></span>
+									<br>
+									<hr>
+									@if ($errors->any())
+			<div class="alert alert-danger" style="height: 70px;">
 				<ul class="list-unstyled">
 					@foreach ($errors->all() as $error)
 					<li>{{ $error }}</li>
@@ -38,62 +64,59 @@
 				</ul>
 			</div>
 			@endif
-                    <img src="{{url('styles/uploads/logo.png')}}" class="logo logo-display m-top-10" alt="IMG" >
+
+									<div class="col_full">
+										<label for="login-form-username">Email <span style='color:red'>*</span>:</label>
+										<input type="text" name="email" id="login-form-username" placeholder="Adresse E-mail"  name="email" class="form-control not-dark" />
+									</div>
+
+									<div class="col_full">
+										<label for="login-form-password">Mot de passe <span style='color:red'>*</span>:</label>
+										<input type="password" name="password" id="login-form-password" placeholder="Entrer mot de passe" value="" class="form-control not-dark" />
+									</div>
+
+									<div class="col_full nobottommargin">
+										<button class="button button-3d button-black nomargin" type='submit' id="login-form-submit" value="login">Se connecter</button>
+										<!-- <a href="#" class="fright">Forgot Password?</a> -->
+									</div>
+								</form>
+
+								
+			
+
+								<!-- <div class="center">
+									<h4 style="margin-bottom: 15px;">or Login with:</h4>
+									<a href="#" class="button button-rounded si-facebook si-colored">Facebook</a>
+									<span class="d-none d-md-block">or</span>
+									<a href="#" class="button button-rounded si-twitter si-colored">Twitter</a>
+								</div> -->
+							</div>
+						</div>
+
+						<div class="center dark"><small>&copy; <span style="color:red">BSC - Business Supply Center </span> / {{date('Y')}} - V1.0 / -Tous droits réservés</small></div>
+						<div class="center dark"><small><span>Développer par</span> <a style="color: red;" href="https://eso-dev.com">ESO-DEV</a> </small></div>
+
+					</div>
 				</div>
 
-                <form method="POST" action="{{ route('admin.login') }}" class="login100-form validate-form">
-                     @csrf
-					<span class="login100-form-title">
-						CONNEXION
-					</span>
-
-					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-						<input class="input100" type="text" name="email" placeholder="Email">
-						<span class="focus-input100"></span>
-						<span class="symbol-input100">
-							<i class="fa fa-envelope" aria-hidden="true"></i>
-						</span>
-					</div>
-
-					<div class="wrap-input100 validate-input" data-validate = "Password is required">
-						<input class="input100" type="password" name="password" placeholder="Password">
-						<span class="focus-input100"></span>
-						<span class="symbol-input100">
-							<i class="fa fa-lock" aria-hidden="true"></i>
-						</span>
-					</div>
-
-					<div class="container-login100-form-btn">
-						<button class="login100-form-btn">
-							Login
-						</button>
-					</div>
-
-
-				</form>
 			</div>
-		</div>
-	</div>
 
+		</section><!-- #content end -->
 
+	</div><!-- #wrapper end -->
 
+	<!-- Go To Top
+	============================================= -->
+	<div id="gotoTop" class="icon-angle-up"></div>
 
-<!--===============================================================================================-->
-	<script src="{{asset('vendor/jquery/jquery-3.2.1.min.js')}}"></script>
-<!--===============================================================================================-->
-	<script src="{{asset('vendor/bootstrap/js/popper.js')}}"></script>
-	<script src="{{asset('vendor/bootstrap/js/bootstrap.min.js')}}"></script>
-<!--===============================================================================================-->
-	<script src="{{asset('vendor/select2/select2.min.js')}}"></script>
-<!--===============================================================================================-->
-	<script src="{{asset('vendor/tilt/tilt.jquery.min.js')}}"></script>
-	<script >
-		$('.js-tilt').tilt({
-			scale: 1.1
-		})
-	</script>
-<!--===============================================================================================-->
-	<script src="{{asset('vendor/js/main.js')}}"></script>
+	<!-- External JavaScripts
+	============================================= -->
+	<script src="{{asset('/styles/js/login/jquery.js')}}"></script>
+	<script src="{{asset('/styles/js/login/plugins.js')}}"></script>
+
+	<!-- Footer Scripts
+	============================================= -->
+	<script src="{{asset('/styles/js/login/functions.js')}}"></script>
 
 </body>
 </html>

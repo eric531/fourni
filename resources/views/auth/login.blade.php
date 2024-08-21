@@ -21,7 +21,7 @@
 
 	<!-- Document Title
 	============================================= -->
-	<title>Logiciel | Bsc-agrement</title>
+	<title>Gestion des Agréments Fournisseurs</title>
 
 </head>
 
@@ -51,9 +51,19 @@
 								<div class="center">
 							<a href="index.html"><img src="{{asset('styles/uploads/logo.png')}}" alt="Logo-Bsc-agrement" style="height: 50px;"></a>
 						</div>
-                                    <span style='text-align:center; display:flex; justify-content:center'>Connectez vous à votre compte</span>
+			
+                                    <span style='text-align:center; display:flex; justify-content:center'>Connectez vous à votre compte &nbsp; <b>acheteur</b></span>
 									<br>
 									<hr>
+									@if ($errors->any())
+			<div class="alert alert-danger" style="height: 70px;">
+				<ul class="list-unstyled">
+					@foreach ($errors->all() as $error)
+					<li>{{ $error }}</li>
+					@endforeach
+				</ul>
+			</div>
+			@endif
 
 									<div class="col_full">
 										<label for="login-form-username">Email <span style='color:red'>*</span>:</label>
@@ -71,7 +81,8 @@
 									</div>
 								</form>
 
-								<div class="line line-sm"></div>
+								
+			
 
 								<!-- <div class="center">
 									<h4 style="margin-bottom: 15px;">or Login with:</h4>
@@ -82,7 +93,8 @@
 							</div>
 						</div>
 
-						<div class="center dark"><small>Copyrights &copy; 2022- {{date('Y')}} <span style="color:red">BSC Logiciel Fournisseurs agréés </span> -Tous droits réservés</small></div>
+						<div class="center dark"><small>&copy;<span style="color:red">BSC - Business Supply Center </span> / {{date('Y')}} - V1.0 / -Tous droits réservés</small></div>
+						<div class="center dark"><small><span>Développer par</span> <a style="color: red;" href="https://eso-dev.com">ESO-DEV</a> </small></div>
 
 					</div>
 				</div>
