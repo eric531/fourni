@@ -93,7 +93,7 @@
 							</div>
 						</div>
 
-						<div class="center dark"><small>&copy;<span style="color:red">BSC - Business Supply Center </span> / {{date('Y')}} - V1.0 / -Tous droits réservés</small></div>
+						<div class="center dark"><small>&copy; <span style="color:red">BSC - Business Supply Center </span> / {{date('Y')}} - V1.0 / -Tous droits réservés</small></div>
 						<div class="center dark"><small><span>Développer par</span> <a style="color: red;" href="https://eso-dev.com">ESO-DEV</a> </small></div>
 
 					</div>

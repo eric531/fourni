@@ -376,6 +376,65 @@ ul.dropdown-menu{
 	background-image: none;
 }
 /*--- User Panel---*/
+ul.nav {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+ul.nav > li {
+    position: relative;
+}
+
+ul.nav > li > a {
+    display: block;
+    padding: 6px;
+    color: #fff;
+    text-decoration: none;
+    /* Exemple de couleur de fond */
+    transition: background-color 0.3s ease;
+}
+
+ul.nav > li > a:hover {
+    /* background-color: #fff; */
+    /*Couleur de survol */
+}
+
+ul.nav > li.menu > ul {
+    display: none;
+    position: absolute;
+    left: 20%;
+    top: 10;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    background-color: #8d8a8a; /* Couleur de fond de la sous-liste */
+    min-width:80%;
+    z-index: 1000;
+}
+
+ul.nav > li.menu:hover > ul {
+    display: block;
+}
+
+ul.nav > li.menu ul li {
+    position: relative;
+}
+
+ul.nav > li.menu ul li a {
+    padding: 2px;
+    color: #fff;
+    text-decoration: none;
+    display: block;
+    background-color: ; /* Même couleur que le parent pour la continuité */
+}
+
+ul.nav > li.menu ul li a:hover {
+    background-color: #ee763c; /* Couleur de survol */
+}
+
+
+
 .profile_details_left {
     float: left;
 }

@@ -66,32 +66,32 @@
         <li >
             <a href="{{ route('draft_list') }}" class="{{ Request::is('draft') ? 'active' : '' }}"><i class="fa  fa-user nav_icon"></i>Liste des fournisseurs prospects</a>
         </li>
-        <!-- <li >
-            <a href="#" ><i class="fa fa-edit nav_icon"></i>Evaluation fournisseur</a>
-        </li> -->
+
         <li >
             <a href="{{ route('blacklist') }}" class="{{ Request::is('blacklist') ? 'active' : '' }}"><i class="fa fa-ban nav_icon"></i>Liste des fournisseurs blacklistés</a>
         </li>
 		<li class="menu">
-            <a class=""><i class="fa fa-edit nav_icon"></i>Commande & Evalu</a>
-			
+            <a class="" href="#"><i class="fa fa-edit nav_icon"></i>Commande & Evaluation</a>
+			<ul>
+				<li>
+					<a href="#"><i class="fa fa-shopping-cart nav_icon"></i>Commande</a>
+				</li>
+				<li>
+					<a href="#"><i class="fa fa-book nav_icon"></i>Evaluation</a>
+				</li>
+			</ul>
         </li>
 
 
     </ul>
-    <div class="logo" style="background:#fff; position:absolute; height:70px;width:100%; bottom: 70px;border-radius:10px">
-<div>
-<p style="font-size: 10px; font-family:sans-serif">contact: <b>+225 0703370000</b>; Gmail: <b>achats@bsc-ci.net</b></p>
-<p style="font-size: 10px;color:#e94e02"><b>BSC votre partenaire achats pour simplifier vos processus</b></p>
+    <div class="logo" style="background:#808080de; position:absolute; height:90px;width:100%; bottom: 60px;border-radius:10px;box-shadow:0px 0px 0px 5px #fff">
+<div style="top:40px; position:relative">
+<p style="font-size: 10px; font-family:sans-serif;color:#fff">CONTACT: <b>+225 0703370000</b> | GMAIL: <b>achats@bsc-ci.net</b></p>
+<p style="font-size: 10px;color:red"><b>BSC votre partenaire achats pour simplifier vos processus</b></p>
 </div>
-	<a href="#" style="position:absolute; bottom:0; width:100%;">
-        
-			
-		<img style="background:#fff; height:30px; width:50px;" src="{{asset('styles/uploads/logo.png')}}" alt="Logo">
-		
-		
+	<a href="#" style="position:absolute;top:-25px; bottom:0; width:100%;">
+		<img style=" height:50px; width:50px;" src="{{asset('styles/uploads/bsc.png')}}" alt="Logo">
     </a>
-
 </div>
 </nav>
 
