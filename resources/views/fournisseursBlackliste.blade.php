@@ -11,9 +11,9 @@
 			<div class="tables">
             <div class="table-responsive bs-example widget-shadow" style="border-radius:10px; padding:10px">
 						<h4>Fournisseurs blacklistés</h4>
-                        <div style="height: 45px;background-color:#8080806b; color: #000; padding:5px; border-radius:10px">
+                        <div style="height: 70px;background-color:#8080806b; color: #000; padding:5px; border-radius:10px;  top:-20px">
 
-<form id="searchForm" method="POST" action="{{ route('search_fourn') }}">
+<form id="searchForm" method="POST" action="{{ route('search_fourn') }}"style="top:15px; position:relative">
     @csrf
 
     <div class="col-md-3">
@@ -82,14 +82,14 @@
 
                         </div>
                        
-                        <div  class="col-md-5" style="display: flex;padding-bottom:5px">
+                        <div  class="col-md-5" style="display: flex;padding-bottom:5px;position:relative; left:120px">
 
-                        <button type="submit" class="btn btn-danger">Exporter vers pdf</button>
-                        &nbsp;
+                        <button type="submit" class="btn btn-primary">Exporter vers pdf</button>
+                        &nbsp;&nbsp;&nbsp;&nbsp;
                         <form id="exportExcelForm" method="POST" action="{{ route('export.excel') }}">
                             @csrf
                             <input type="hidden" name="selected_suppliers_ids" id="selectedSuppliersIdsExcel">
-                            <button type="submit" class="btn btn-success">Exporter vers Excel</button>
+                            <button type="submit" class="btn btn-primary">Exporter vers Excel</button>
                         </form>
                         
 
@@ -98,11 +98,11 @@
 
                     
                    
-                    <div class="col-md-5" style="display:flex;">
+                    <div class="col-md-5" style="display:flex;position:absolute; left:1040px">
                         <div>
                         <button type="button" class="btn btn-primary mailing-btn-email">Mailing to</button>
                         </div>
-                        &nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;
                         <div>
                         <button type="submit" class="btn btn-primary mailing-btn-email-list" style="float:right;">Mailing list</button>
 

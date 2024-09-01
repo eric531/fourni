@@ -6,7 +6,7 @@
 <div id="page-wrapper">
     <div class="main-page">
         <div class="row-one">
-            <div class="col-md-4 widget">
+            <div class="col-md-3 widget" style="width: 220px;height: 100px;">
                 <div class="stats-left">
                     <h6 style="color:#fff">TOTAL</h6>
                     <br>
@@ -17,7 +17,7 @@
                 </div>
                 <div class="clearfix"> </div>
             </div>
-            <div class="col-md-4 widget states-mdl">
+            <div class="col-md-3 widget states-mdl"style="width: 220px;height: 100px;">
                 <div class="stats-left">
                     <h6 style="color:#fff">TOTAL</h6><br>
                     <h5>FOURNISSEURS PROSPECTS</h5>
@@ -27,7 +27,7 @@
                 </div>
                 
             </div>
-            <div class="col-md-4 widget states-last">
+            <div class="col-md-3 widget states-last"style="width: 220px;height: 100px;">
                 <div class="stats-left">
                     <h6 style="color:#fff">TOTAL</h6> <br>
                     <h5>FOURNISSEURS BLACKLISTÉS</h5>
@@ -37,6 +37,18 @@
                 </div>
                 <div class="clearfix"> </div>
             </div>
+
+            <div class="col-md-3 widget states-mdl"style="width: 220px;height: 100px;">
+                <div class="stats-left">
+                    <h6 style="color:#fff">TOTAL</h6> <br>
+                    <h5>COMMANDE ENREGISTREES</h5>
+                </div>
+                <div class="stats-right">
+                    <label>0</label>
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+
             <div class="clearfix"> </div>
         </div>
 

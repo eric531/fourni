@@ -16,19 +16,19 @@
         <div class="tables">
         
         <div class="table-responsive bs-example widget-shadow" style="background-color:#fff; border-radius:10px">
-            <h4>Réchercher un fournisseur</h4><br>
+            <h4>Rechercher un Fournisseur</h4><br>
             <div style="height: auto;background-color:#8080806b; color: #000; padding:5px; border-radius:10px">
-            <form method="GET" action="{{ route('recherche') }}">
+            <form method="GET" action="{{ route('recherche') }}" >
                     @csrf
-                    <div class="row">
-                        <div class="col-md-6" style="background-color: #e94e02;border-radius:10px">
+                    <div class="row" style="height:40px; top:-10px">
+                        <div class="col-md-6" style="background-color: #e94e02;border-radius:10px;">
                             <center style="font-size: 18px; text-align: center; padding-top: 3px; color:#fff">
-                                Rechercher un fournisseur agrée
+                                Rechercher un Fournisseur
                             </center>
                         </div>
 
                         <div class="col-md-3">
-                            <div class="form-group" style="border-radius:10px">
+                            <div class="form-group" style="border-radius:10px;">
                                 <input type="text" name="code_fournisseur" class="form-control" placeholder="code: FCIxxxxx0">
                             </div>
                         </div>

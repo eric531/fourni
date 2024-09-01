@@ -71,14 +71,22 @@
             <a href="{{ route('blacklist') }}" class="{{ Request::is('blacklist') ? 'active' : '' }}"><i class="fa fa-ban nav_icon"></i>Liste des fournisseurs blacklistés</a>
         </li>
 		<li class="menu">
-            <a class="" href="#"><i class="fa fa-edit nav_icon"></i>Commande & Evaluation</a>
+            <a class="" href="#"><i class="fa fa-edit nav_icon"></i>Commandes & Evaluations</a>
 			<ul>
 				<li>
-					<a href="#"><i class="fa fa-shopping-cart nav_icon"></i>Commande</a>
+					<a href="#"><i class="fa fa-shopping-cart nav_icon"></i>Saisie des commandes
+					</a>
 				</li>
 				<li>
-					<a href="#"><i class="fa fa-book nav_icon"></i>Evaluation</a>
+					<a href="#"><i class="fa fa-book nav_icon"></i>Evaluation Fournisseurs</a>
 				</li>
+				<li>
+					<a href="#"><i class="fa fa-book nav_icon"></i>Liste des commandes</a>
+				</li>
+				<li>
+					<a href="#"><i class="fa fa-book nav_icon"></i>Liste des évaluations</a>
+				</li>
+				
 			</ul>
         </li>
 
@@ -86,10 +94,11 @@
     </ul>
     <div class="logo" style="background:#808080de; position:absolute; height:90px;width:100%; bottom: 60px;border-radius:10px;box-shadow:0px 0px 0px 5px #fff">
 <div style="top:40px; position:relative">
-<p style="font-size: 10px; font-family:sans-serif;color:#fff">CONTACT: <b>+225 0703370000</b> | GMAIL: <b>achats@bsc-ci.net</b></p>
-<p style="font-size: 10px;color:red"><b>BSC votre partenaire achats pour simplifier vos processus</b></p>
+<!-- <p style="font-size: 10px; font-family:sans-serif;color:#fff">CONTACT: <b>+225 0703370000</b> | GMAIL: <b>achats@bsc-ci.net</b></p> -->
+<p style="font-size: 10px;color:#fff; position:relative; top:-10px"><b>Logiciel délivré par BSC, votre partenaire Achats ! <br> Contact : support@bsc-africa.net / 07 03 37 00 00
+</b></p>
 </div>
-	<a href="#" style="position:absolute;top:-25px; bottom:0; width:100%;">
+	<a  href="https://www.bsc-agrement.net" style="position:absolute;top:-42px; bottom:0; width:100%;">
 		<img style=" height:50px; width:50px;" src="{{asset('styles/uploads/bsc.png')}}" alt="Logo">
     </a>
 </div>
@@ -99,9 +108,9 @@
 		</div>
 		<!--left-fixed -navigation-->
 		<!-- header-starts -->
-		<div class="sticky-header header-section" style="">
-			<h1 style="position: absolute;left:330px;top:20px;font-weight:bold">GESTION DES AGREMENTS FOURNISSEURS</h1>
-			<div class="header-left" style="">
+		<div class="sticky-header header-section">
+			<h1 style="position: absolute;left:340px;top:20px;color:#838586">Gestion des Agrements Fournisseurs</h1>
+			<div class="header-left">
 				<!--toggle button start-->
 				<button id="showLeftPush"><i class="fa fa-bars"></i></button>
 				<!--toggle button end-->
