@@ -42,7 +42,7 @@
             </div>
           </div>
 
-          <button type="submit" class="btn btn-primary me-2">Enregister</button>
+          <button type="submit" class="btn btn-primary me-2">Modifier</button>
                     <button class="btn btn-light"><a href="{{route('products.index')}}">Annuler</a></button>
 
         </form>

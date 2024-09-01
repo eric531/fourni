@@ -89,7 +89,7 @@
 								<th scope="col">Entreprise</th>
 								<th scope="col">Debut</th>
                                 <th scope="col">Fin</th>
-								<th scope="col">Action</th>
+								
 							</tr>
 						</thead>
 						<tbody>

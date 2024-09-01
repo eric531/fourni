@@ -14,7 +14,7 @@
 
                         <div class="col-md-4 d-flex justify-content-end align-items-end ">
                         <button type="button" class="btn btn-primary mb-4" data-toggle="modal" data-target="#exampleModal">
-                            Créér un abonnement
+                            Créer un abonnement
                         </button>
                     </div>
 

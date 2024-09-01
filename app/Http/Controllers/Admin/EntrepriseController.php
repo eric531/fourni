@@ -31,7 +31,7 @@ class EntrepriseController extends Controller
             return view('admin.entreprises.entreprises', compact('acheteurs','entreprises'));
         }
     } catch (\Exception $e) {
-        dd('ssss',$response);
+        // dd('ssss',$response);
     }
 
     }

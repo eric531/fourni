@@ -18,10 +18,10 @@
         <div class="table-responsive bs-example widget-shadow" style="background-color:#fff; border-radius:10px">
             <h4>Rechercher un Fournisseur</h4><br>
             <div style="height: auto;background-color:#8080806b; color: #000; padding:5px; border-radius:10px">
-            <form method="GET" action="{{ route('recherche') }}" >
+            <form method="GET" action="{{ route('recherche') }}" style="position: relative;top:-15px" >
                     @csrf
                     <div class="row" style="height:40px; top:-10px">
-                        <div class="col-md-6" style="background-color: #e94e02;border-radius:10px;">
+                        <div class="col-md-6" style="background-color: #e94e02;border-radius:10px; height:40px">
                             <center style="font-size: 18px; text-align: center; padding-top: 3px; color:#fff">
                                 Rechercher un Fournisseur
                             </center>
@@ -29,13 +29,13 @@
 
                         <div class="col-md-3">
                             <div class="form-group" style="border-radius:10px;">
-                                <input type="text" name="code_fournisseur" class="form-control" placeholder="code: FCIxxxxx0">
+                                <input style="height:40px" type="text" name="code_fournisseur" class="form-control" placeholder="code: FCIxxxxx0">
                             </div>
                         </div>
 
                         <div class="col-md-3">
                             <div class="form-group">
-                                <button type="submit" class="btn" style="background-color: #4f52ba; color:#fff; border-radius:10px">Rechercher</button>
+                                <button type="submit" class="btn" style="background-color: #4f52ba; color:#fff; border-radius:10px;height:40px">Rechercher</button>
                             </div>
                         </div>
                     </div>

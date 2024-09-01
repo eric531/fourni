@@ -19,7 +19,7 @@
                     </div>
                     <div class="col d-flex justify-content-end align-items-end ">
                         <button type="button" class="btn btn-primary mb-4" data-toggle="modal" data-target="#exampleModal">
-                            Ajouter
+                            Créer une entreprise
                         </button>
                     </div>
                     @include('admin.entreprises.form')
