@@ -49,7 +49,7 @@
 
                 
             </div>
-            
+           
         </div>
     </div>
 </div>
@@ -196,7 +196,12 @@
                                 <input type="hidden" name="fournisseur" value="">
                             @endif
 
-                            <button type="submit" class="btn btn-primary">Ajouter fournisseur</button>
+                            <div class="row" style="display: flex;"></div>
+                            <div class="col-md-2"><button style="background-color:#e94e02" class="btn btn-primary">Voir fiche</button></div>
+                            <div class="col-md-10" style="position: relative;left:500px" >
+                                <button type="submit" class="btn btn-primary">Ajouter à la liste des fournisseursprospects</button>
+                            </div>
+                            <!-- <button type="submit" class="btn btn-primary">Ajouter fournisseur</button> -->
                             </form>
                             @if (!isset($searchfournisseur) && !session('success') && !session('error'))
     <p>Le fournisseur n'a pas été trouvé.</p>
