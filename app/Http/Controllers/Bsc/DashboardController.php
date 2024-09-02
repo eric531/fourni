@@ -25,7 +25,12 @@ class DashboardController extends Controller
         $token = $_COOKIE['token'] ?? null;
         $user = $_COOKIE['user']??null;
         $user_id = $_COOKIE['user_id'] ?? null;
-        $logoE = Entreprise::where("user_id",$user_id)->first();
+
+        $entrepriseIds = \DB::table('entreprise_user')
+        ->where('user_id', $user_id)
+        ->pluck('entreprise_id');
+
+        $logoE = Entreprise::find($entrepriseIds)->first();
         $logo =$logoE->logo;
         return view('dashboard', compact('fourn_agree', 'fourn_draft', 'fourn_blacklist','user','fournisseurs','logo'));
     }

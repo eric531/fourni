@@ -42,15 +42,16 @@
             </div>
           </div>
           <div class="form-group row">
-            <label class="col-sm-12 col-md-2 col-form-label">Acheteur</label>
-            <div class="col-sm-12 col-md-10">
-            <select class="form-control" name="user_id" id="acheteur">
-            @foreach($acheteurs as $acheteur)
-                <option value="{{ $acheteur->id }}">{{ $acheteur->username }} - {{ $acheteur->username }}</option>
-            @endforeach
-        </select>
-            </div>
-          </div>
+  <label class="col-sm-12 col-md-2 col-form-label">Acheteurs</label>
+  <div class="col-sm-12 col-md-10">
+    <select class="form-control" name="user_id[]" id="acheteur" multiple="multiple">
+      @foreach($acheteurs as $acheteur)
+          <option value="{{ $acheteur->id }}">{{ $acheteur->username }} - {{ $acheteur->email }}</option>
+      @endforeach
+    </select>
+  </div>
+</div>
+
         </form>
       </div>
       <div class="modal-footer">
@@ -94,19 +95,20 @@ function openModalForEdit(entrepriseId) {
 
 function saveChanges() {
 
+
   let nomInput = document.getElementById('nom');
   let adresseInput = document.getElementById('adresse');
   let emailInput = document.getElementById('email');
   let telephoneInput = document.getElementById('telephone');
   let logoInput = document.getElementById('logo');
   let userInput = document.getElementById('acheteur');
-
+  let users = Array.from(userInput.selectedOptions).map(option => option.value);
 
   let nom = nomInput.value;
   let adresse = adresseInput.value;
   let email = emailInput.value;
   let telephone = telephoneInput.value;
-  let logo = logoInput.files[0]; 
+  let logo = logoInput.files[0];
   let user = userInput.value;
 
   let formData = new FormData();
@@ -115,7 +117,11 @@ function saveChanges() {
   formData.append('email', email);
   formData.append('telephone', telephone);
   formData.append('logo', logo);
-  formData.append('user_id', user);
+//   formData.append('user_id', user);
+
+  users.forEach(user => {
+  formData.append('user_id[]', user);
+});
 
   formData.append('_method', editingEntrepriseId ? 'PUT' : 'POST');
 
@@ -198,5 +204,13 @@ function updateTable(data) {
     tbody.appendChild(row);
   });
 }
+
+$(document).ready(function() {
+  $('#acheteur').select2({
+    placeholder: "Sélectionnez un ou plusieurs acheteurs",
+    allowClear: true,
+    width: '100%'
+  });
+});
 
 </script>

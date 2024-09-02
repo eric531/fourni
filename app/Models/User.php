@@ -48,4 +48,8 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Fournisseur::class);
     }
+    public function entreprises()
+    {
+        return $this->belongsToMany(Entreprise::class, 'entreprise_user');
+    }
 }

@@ -49,34 +49,25 @@ class EntrepriseController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+        $validatedData = $request->validate([
             'nom' => 'required|string|max:255',
             'adresse' => 'required|string|max:255',
-            'email' => 'required|email|max:255|unique:entreprises,email',
-            'telephone' => 'required|string|max:20',
-            'user_id'=>'required|string|max:20',
+            'email' => 'required|email|max:255',
+            'telephone' => 'required|string|max:15',
+            'logo' => 'nullable|image|max:2048',
+            'user_id' => 'required|array',
         ]);
-        $imagePath="";
-        if ($request->hasFile('logo')) {
+        // dd($validatedData['user_id']);
+        $entreprise = Entreprise::create([
+            'nom' => $validatedData['nom'],
+            'adresse' => $validatedData['adresse'],
+            'email' => $validatedData['email'],
+            'telephone' => $validatedData['telephone'],
+            'logo' => $validatedData['logo'] ? $validatedData['logo']->store('logos') : null,
+        ]);
 
-            $imagePath = $request->file('logo')->store('logos', 'public');
-            Entreprise::create([
-                'nom' => $request->nom,
-                'adresse' => $request->adresse,
-                'email' => $request->email,
-                'telephone' => $request->telephone,
-                'user_id'=>$request->user_id,
-                'logo'=>$imagePath
-            ]);
-        }else{
-            Entreprise::create([
-                'nom' => $request->nom,
-                'adresse' => $request->adresse,
-                'email' => $request->email,
-                'telephone' => $request->telephone,
-                'user_id'=>$request->user_id,
-            ]);
-        }
+        $entreprise->acheteurs()->sync($validatedData['user_id']);
+
 
         $entreprises = Entreprise::paginate(10);
 
@@ -112,35 +103,37 @@ class EntrepriseController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate([
+        $validatedData = $request->validate([
             'nom' => 'required|string|max:255',
             'adresse' => 'required|string|max:255',
-            'email' => 'required|email|max:255|unique:entreprises,email,' . $id,
-            'telephone' => 'required|string|max:20',
+            'email' => 'required|email|max:255',
+            'telephone' => 'required|string|max:15',
+            'logo' => 'nullable|image|max:2048',
+            'user_id' => 'required|array',
         ]);
-        $entreprise = Entreprise::findOrFail($id);
-        $imagePath="";
-        if ($request->hasFile('logo')) {
 
-            $imagePath = $request->file('logo')->store('logos', 'public');
-            $entreprise->update([
-                'nom' => $request->nom,
-                'adresse' => $request->adresse,
-                'email' => $request->email,
-                'telephone' => $request->telephone,
-                'logo'=>$imagePath
-            ]);
-        }else{
-            $entreprise->update([
-                'nom' => $request->nom,
-                'adresse' => $request->adresse,
-                'email' => $request->email,
-                'telephone' => $request->telephone,
-            ]);
+        // Vérifiez qu'aucun utilisateur n'est déjà associé à une autre entreprise
+        $existingAssociation = \DB::table('entreprise_user')
+        ->whereIn('user_id', $validatedData['user_id'])
+        ->exists();
+
+        if ($existingAssociation) {
+        return response()->json(['success' => false, 'message' => 'One or more selected users are already associated with another enterprise.'], 400);
         }
-
+        
+        $entreprise = Entreprise::findOrFail($id);
+        $entreprise->update(
+            [
+                'nom' => $validatedData['nom'],
+                'adresse' => $validatedData['adresse'],
+                'email' => $validatedData['email'],
+                'telephone' => $validatedData['telephone'],
+                'logo' => $validatedData['logo'] ? $validatedData['logo']->store('logos') : null,
+            ]);
+        $entreprise->acheteurs()->sync($validatedData['user_id']);
 
         $entreprises = Entreprise::paginate(10);
+
         return response()->json(['success' => true, 'message' => 'Entreprise modifie avec succès.', 'entreprises' => $entreprises], 200);
 
     }

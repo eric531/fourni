@@ -18,32 +18,58 @@ class CheckUserSubscriptionMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        $user = $_COOKIE['user_id']??null;
+        $userId = $_COOKIE['user_id'] ?? null;
 
-        if ($this->checkActiveAbonnement($user)) {
+        if ($this->checkActiveAbonnement($userId)) {
             return $next($request);
         }
 
         abort(403, "No active abonnements found for this entreprise.");
-        // dd("sdwdws");
     }
 
     /**
      * Check if the user has active abonnement.
      *
-     * @param  int  $user_id
+     * @param  int|null  $userId
      * @return bool
      */
-    protected function checkActiveAbonnement($user_id)
-    {
+//     protected function checkActiveAbonnement($userId)
+//     {
+//         if (!$userId) {
+//             return false;
+//         }
 
-        $entreprise = Entreprise::where('user_id', $user_id)->first();
-        if ($entreprise) {
-            $activeAbonnements = $entreprise->abonnements()->where('end_date', '>=', Carbon::now())->get();
+//         // Récupérer toutes les entreprises associées à cet utilisateur
+//         $entreprises = Entreprise::whereHas('acheteurs', function ($query) use ($userId) {
+//             $query->where('user_id', $userId);
+//         })->get();
+// dd($entreprises);
+//         foreach ($entreprises as $entreprise) {
+//             // Vérifiez si l'entreprise a des abonnements actifs
+//             $activeAbonnements = $entreprise->abonnements()->where('end_date', '>=', Carbon::now())->exists();
 
-            return true;
-        }
+//             if ($activeAbonnements) {
+//                 return true;
+//             }
+//         }
 
-        return false;
-    }
+//         return false;
+//     }
+
+protected function checkActiveAbonnement($user_id)
+{
+    // Retrieve all entreprise IDs associated with this user_id from the pivot table
+    $entrepriseIds = \DB::table('entreprise_user')
+        ->where('user_id', $user_id)
+        ->pluck('entreprise_id');
+
+    // Check if there are any entreprises with active abonnements
+    $activeAbonnements = \DB::table('abonnements')
+        ->whereIn('entreprise_id', $entrepriseIds)
+        ->where('end_date', '>=', Carbon::now())
+        ->exists();
+
+    return $activeAbonnements;
+}
+
 }

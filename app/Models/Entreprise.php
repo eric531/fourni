@@ -14,4 +14,9 @@ class Entreprise extends Model
     {
         return $this->hasMany(Abonnements::class, 'entreprise_id');
     }
+    public function acheteurs()
+    {
+        return $this->belongsToMany(User::class, 'entreprise_user', 'entreprise_id', 'user_id');
+    }
+
 }
