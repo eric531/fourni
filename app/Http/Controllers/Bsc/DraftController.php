@@ -22,8 +22,11 @@ class DraftController extends Controller
         $user_id = $_COOKIE['user_id'] ?? null;
         $fournisseurs = Draft::where('user_id',$user_id)->paginate(5);
         $user_id = $_COOKIE['user_id'] ?? null;
+        $entrepriseIds = \DB::table('entreprise_user')
+        ->where('user_id', $user_id)
+        ->pluck('entreprise_id');
 
-        $logoE = Entreprise::where("user_id",$user_id)->first();
+        $logoE = Entreprise::find($entrepriseIds)->first();
         $logo =$logoE->logo;
         return view("fournisseursProspects", compact("fournisseurs","user","logo"));
     }

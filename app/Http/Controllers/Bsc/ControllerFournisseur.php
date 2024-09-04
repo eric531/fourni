@@ -26,7 +26,11 @@ class ControllerFournisseur extends Controller
         $user = $_COOKIE['user']??null;
         $user_id = $_COOKIE['user_id'] ?? null;
 
-        $logoE = Entreprise::where("user_id",$user_id)->first();
+        $entrepriseIds = \DB::table('entreprise_user')
+        ->where('user_id', $user_id)
+        ->pluck('entreprise_id');
+
+        $logoE = Entreprise::find($entrepriseIds)->first();
         $logo =$logoE->logo;
 
         $fournisseurs = Fournisseur::where('user_id',$user_id)->where('blaklist',false)->paginate(5);
@@ -42,7 +46,11 @@ class ControllerFournisseur extends Controller
         $token = $_COOKIE['token'] ?? null;
         $user = $_COOKIE['user']??null;
         $user_id = $_COOKIE['user_id'] ?? null;
-        $logoE = Entreprise::where("user_id",$user_id)->first();
+        $entrepriseIds = \DB::table('entreprise_user')
+        ->where('user_id', $user_id)
+        ->pluck('entreprise_id');
+
+        $logoE = Entreprise::find($entrepriseIds)->first();
         $logo =$logoE->logo;
 
         return view('search', compact('user','logo'));
@@ -99,7 +107,11 @@ class ControllerFournisseur extends Controller
         $token = $_COOKIE['token'] ?? null;
         $user = $_COOKIE['user']??null;
         $user_id = $_COOKIE['user_id'] ?? null;
-             $logoE = Entreprise::where("user_id",$user_id)->first();
+        $entrepriseIds = \DB::table('entreprise_user')
+        ->where('user_id', $user_id)
+        ->pluck('entreprise_id');
+
+        $logoE = Entreprise::find($entrepriseIds)->first();
         $logo =$logoE->logo;
 
         $fournisseurs = Fournisseur::where('user_id',$user_id)->where('blaklist',true)->paginate(5);
@@ -185,7 +197,11 @@ class ControllerFournisseur extends Controller
         $user = $_COOKIE['user']??null;
         $user_id = $_COOKIE['user_id']??null;
         $client = new Client();
-        $logoE = Entreprise::where("user_id",$user_id)->first();
+        $entrepriseIds = \DB::table('entreprise_user')
+        ->where('user_id', $user_id)
+        ->pluck('entreprise_id');
+
+        $logoE = Entreprise::find($entrepriseIds)->first();
         $logo =$logoE->logo;
 
 

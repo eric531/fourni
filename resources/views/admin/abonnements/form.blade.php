@@ -57,6 +57,7 @@ let editingEntrepriseId = null;
 
 function openModalForEdit(entrepriseId) {
   editingEntrepriseId = entrepriseId;
+  document.getElementById('exampleModalLabel').textContent = "Éditer un abonnement";
 
   $.ajax({
     type: 'GET',
